@@ -17,17 +17,20 @@ Gem::Specification.new do |s|
      "README.markdown"
   ]
   s.files = [
-    ".document",
-     ".gitignore",
+    ".gitignore",
      "LICENSE",
+     "README.markdown",
      "Rakefile",
      "VERSION",
+     "config/paypal_adaptive.yml",
      "lib/config.rb",
      "lib/ipn_notification.rb",
      "lib/pay_request.rb",
      "lib/pay_request_schema.json",
      "lib/pay_response.rb",
      "lib/paypal_adaptive.rb",
+     "paypal_adaptive.gemspec",
+     "templates/paypal_ipn.rb",
      "test/data/invalid_chain_pay_request.json",
      "test/data/invalid_parallel_pay_request.json",
      "test/data/invalid_simple_pay_request_1.json",

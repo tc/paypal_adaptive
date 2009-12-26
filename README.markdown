@@ -7,8 +7,29 @@ Before you need start, download pp_adaptivepayments.pdf and IPNGuide.pdf from th
 It'll be invaluable in determining how certain things work and error messages.  
 
 ## HOWTO
+Create paypal_adaptive.yml to your config folder:
+    development:
+      environment: "sandbox"
+      username: "sandbox_username"
+      password: "sandbox_password"
+      signature: "sandbox_signature"
+      application_id: "sandbox_app_id"
 
-Make the paymenet request:
+    test:
+      environment: "sandbox"
+      username: "sandbox_username"
+      password: "sandbox_password"
+      signature: "sandbox_signature"
+      application_id: "sandbox_app_id"
+
+    production:
+      environment: "production"
+      username: "my_production_username"
+      password: "my_production_password"
+      signature: "my_production_signature"
+      application_id: "my_production_app_id"
+
+Make the payment request:
 
     pay_request = PaypalAdaptive::PayRequest.new
 
