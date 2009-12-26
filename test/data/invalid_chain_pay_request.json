@@ -1,0 +1,13 @@
+{
+"returnUrl":"http://127.0.0.1:3000/payments/completed_payment", 
+"requestEnvelope":{"errorLanguage":"en_US"},
+"currencyCode":"USD",  
+"receiverList":{"receiver":[
+            {"email":"testpp_1261697850_per@nextsprocket.com", "amount":"50.00", "primary": "true"},
+            {"email":"sender_1261713739_per@nextsprocket.com", "amount":"100.00", "primary": "false"},
+            {"email":"ppsell_1261697921_biz@nextsprocket.com", "amount":"100.00", "primary": "false"}
+            ]},
+"cancelUrl":"http://127.0.0.1:3000/payments/cancelled_payment",
+ "actionType":"PAY"
+}
+

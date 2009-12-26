@@ -1,0 +1,39 @@
+{"description":"Paypal PayRequest API",
+ "type":"object",
+ "properties":
+  {
+    "actionType": {"type":"string", "options":[{"value":"PAY", "label":"PAY"}]},
+    "cancelUrl": {"type":"string"},
+    "clientDetails": {"type":"object", "optional": true},
+    "currencyCode": {"type":"string"},
+    "feesPayer": {"type":"string", "optional":true,
+                    "options":[
+                        {"value":"SENDER", "label":"SENDER"},
+                        {"value":"PRIMARYRECEIVER", "label":"PRIMARYRECEIVER"},
+                        {"value":"EACHRECEIVER", "label":"EACHRECEIVER"},
+                        {"value":"SECONDARYONLY", "label":"SECONDARYONLY"}
+												]},
+    "fundingConstraint": {"type":"object", "optional": true},
+    "ipnNotificationUrl": {"type":"string", "optional": true},
+    "memo": {"type":"string", "optional": true},
+    "pin": {"type":"string", "optional": true},
+    "preapprovalKey": {"type":"string", "optional": true},
+	  "receiverList": {
+											"type":"object", "properties":{
+	                    "receiver":{
+													"type":"array",  
+	                    		"items":{
+	                        	"email":{"type":"string"},
+	                        	"amount":{"type":"string"},
+	                        	"primary":{"type":"string","optional": true}}
+											    }
+											}
+										},
+										
+    "requestEnvelope": {"type":"object", "properties":{"errorLanguage":{"type":"string"}}},
+    "returnUrl": {"type":"string"},
+    "reverseAllParallelPaymentsOnError": {"type":"boolean", "optional": true},
+    "senderEmail": {"type":"string", "optional": true},
+    "trackingId": {"type":"string", "optional": true}
+  }
+}

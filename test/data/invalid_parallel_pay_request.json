@@ -1,0 +1,13 @@
+{
+"returnUrl":"http://127.0.0.1:3000/payments/completed_payment", 
+"requestEnvelope":{"errorLanguage":"en_US"},
+"currencyCode":"USD",  
+"receiverList":{"receiver":[
+            {"email":"dummy@account.com", "amount":"100.00"},
+            {"email":"dummy@account.com", "amount":"50.00"},
+            {"email":"dummy@account.com", "amount":"50.00"}
+            ]},
+"cancelUrl":"http://127.0.0.1:3000/payments/cancelled_payment",
+ "actionType":"PAY"
+}
+
