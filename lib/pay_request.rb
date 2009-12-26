@@ -72,15 +72,13 @@ module PaypalAdaptive
     end
     
     def call_api(data, path)
-      data = JSON.unparse(data)
+      #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
+      api_request_data = JSON.unparse(data) rescue data.to_json
       url = URI.parse @@api_base_url
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = (url.scheme == 'https')
       
-      resp, response_data = http.post(path, data, @@headers)
-
-      puts response_data
-      
+      resp, response_data = http.post(path, api_request_data, @@headers)
       pp_response = PaypalAdaptive::PayResponse.new(response_data, @env)
     end
   end
