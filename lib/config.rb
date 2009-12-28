@@ -4,13 +4,14 @@ module PaypalAdaptive
       :production => "https://www.paypal.com",
       :sandbox => "https://www.sandbox.paypal.com",
       :beta_sandbox => "https://www.beta-sandbox.paypal.com"
-    }
-    API_BASE_URL_MAPPING= {
+    } unless defined? PAYPAL_BASE_URL_MAPPING
+
+    API_BASE_URL_MAPPING = {
       :production => "https://svcs.paypal.com",
       :sandbox => "https://svcs.sandbox.paypal.com",
       :beta_sandbox => "https://svcs.beta-sandbox.paypal.com"
-    }
-  
+    } unless defined? API_BASE_URL_MAPPING
+
     attr_accessor :config_filepath, :paypal_base_url, :api_base_url, :headers
   
     def initialize(env=nil)
