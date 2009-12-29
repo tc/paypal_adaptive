@@ -1,9 +1,9 @@
 require 'helper'
-require '../lib/pay_request'
+require '../lib/request'
 
 class PayRequestTest < Test::Unit::TestCase
   def setup
-    @pay_request = PaypalAdaptive::PayRequest.new("test")
+    @pay_request = PaypalAdaptive::Request.new("test")
   end
   
   def test_valid_simple_pay
@@ -36,6 +36,11 @@ class PayRequestTest < Test::Unit::TestCase
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
     puts "redirect url to\n #{pp_response.approve_paypal_payment_url}"
+
+    unless pp_response.success?
+      puts pp_response.errors
+    end
+    
     assert pp_response.success?
   end
 
@@ -69,9 +74,6 @@ class PayRequestTest < Test::Unit::TestCase
     assert pp_response.success? == false
   end
   
-  def test_payment_details
-    #TODO
-  end
   
   def test_preapproval
     #TODO

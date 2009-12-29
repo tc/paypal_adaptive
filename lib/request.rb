@@ -1,8 +1,21 @@
-require 'abstract_request'
+require 'json'
+require 'config'
+require 'net/http'
+require 'net/https'
+require 'response'
 
 module PaypalAdaptive
-  class PaypalRequest < PaypalAdaptive::AbstractRequest
+  class NoDataError < Exception
+  end
 
+  class Request
+    def initialize(env = nil)
+      @env = env
+      @@config ||= PaypalAdaptive::Config.new(@env)
+      @@api_base_url ||= @@config.api_base_url
+      @@headers ||= @@config.headers
+    end
+    
     def validate
       #TODO the receiverList field not validating properly
 
@@ -16,7 +29,7 @@ module PaypalAdaptive
       raise NoDataError unless data
 
       response_data = call_api(data, "/AdaptivePayments/Pay")
-      PaypalAdaptive::PayResponse.new(response_data, @env)
+      PaypalAdaptive::Response.new(response_data, @env)
     end
   
     def payment_details(data)
@@ -53,7 +66,19 @@ module PaypalAdaptive
       raise NoDataError unless data
 
       call_api(data, "/AdaptivePayments/Refund")
-    end    
+    end
+
+    def call_api(data, path)
+      #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
+      api_request_data = JSON.unparse(data) rescue data.to_json
+      url = URI.parse @@api_base_url
+      http = Net::HTTP.new(url.host, 443)
+      http.use_ssl = (url.scheme == 'https')
+
+      resp, response_data = http.post(path, api_request_data, @@headers)
+
+      JSON.parse(response_data)
+    end
   end
 
 end

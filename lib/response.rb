@@ -1,30 +1,27 @@
 module PaypalAdaptive
-  class Response    
+  class Response < Hash    
     def initialize(response, env=nil)
       @@config ||= PaypalAdaptive::Config.new(env)
       @@paypal_base_url ||= @@config.paypal_base_url
       
-      @json_response = response
+      self.merge!(response)
     end
     
     def success?
-      @json_response['responseEnvelope']['ack'] == 'Success'
-    end
-    
-    def pay_key
-      @json_response['payKey']
+      self['responseEnvelope']['ack'] == 'Success'
     end
     
     def errors
       if success?
         return []
       else
-        @json_response['error']
+        self['error']
       end
     end
     
     def approve_paypal_payment_url
-      "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{pay_key}"
+      "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
     end
+
   end
 end

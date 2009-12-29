@@ -3,7 +3,7 @@ This gem is a lightweight wrapper for the paypal adaptive payments API.
 
 This is very much a work in progress! Use at your own risk or submit bug fixes :)
 
-Before you need start, download pp_adaptivepayments.pdf and IPNGuide.pdf from the Paypal's dev site http://x.com
+Before you need start, download pp_adaptivepayments.pdf from the Paypal's dev site http://x.com
 It'll be invaluable for parameters and error messages.  
 
 ## HOWTO
@@ -31,7 +31,7 @@ Create paypal_adaptive.yml to your config folder:
 
 Make the payment request:
 
-    pay_request = PaypalAdaptive::PayRequest.new
+    pay_request = PaypalAdaptive::Request.new
 
     data = {
     "returnUrl" => "http://testserver.com/payments/completed_payment_request", 
@@ -62,8 +62,15 @@ They can also click cancel to go to http://testserver.com/payments/canceled_paym
 The actual payment details will be sent to your server via "ipnNotificationUrl"
 You have to create a listener to receive POST messages from paypal. I added a Rails metal template in the templates folder which handles the callbcak.
 
+Additionally, you can make calls to Paypal Adaptive's other APIs:
+    payment_details, preapproval, preapproval_details, cancel_preapproval, convert_currency, refund
+
+Input is just a Hash just like the pay method. Refer to the Paypal manual for more details.
 
 ## Changelog
+0.0.3
+Renamed PayRequest, PayResponse into Request, Response since other api calls use the class as well.
+
 0.0.2
 Fixed initialized constant warning.   
 

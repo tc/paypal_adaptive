@@ -1,17 +1,17 @@
 development:
   environment: "sandbox"
-  username: "sandbox_username"
-  password: "sandbox_password"
-  signature: "sandbox_signature"
-  application_id: "my_production_app_id"
-  
+  username: "ppsell_1261697921_biz_api1.nextsprocket.com"
+  password: "1261697931"
+  signature: "AvNU3m01Oy0AUptTBZxo8FDcJtgVAdqSYYjaUANEYRyzCHacv4QvZ1fG"
+  application_id: "APP-80W284485P519543T"
+
 test:
   environment: "sandbox"
-  username: "sandbox_username"
-  password: "sandbox_password"
-  signature: "sandbox_signature"
-  application_id: "my_production_app_id"
-  
+  username: "ppsell_1261697921_biz_api1.nextsprocket.com"
+  password: "1261697931"
+  signature: "AvNU3m01Oy0AUptTBZxo8FDcJtgVAdqSYYjaUANEYRyzCHacv4QvZ1fG"
+  application_id: "APP-80W284485P519543T"
+
 production:
   environment: "production"
   username: "my_production_username"
