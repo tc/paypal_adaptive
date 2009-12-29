@@ -1,12 +1,10 @@
-require 'json'
-
 module PaypalAdaptive
-  class PayResponse
+  class Response    
     def initialize(response, env=nil)
       @@config ||= PaypalAdaptive::Config.new(env)
       @@paypal_base_url ||= @@config.paypal_base_url
       
-      @json_response = JSON.parse(response)
+      @json_response = response
     end
     
     def success?
