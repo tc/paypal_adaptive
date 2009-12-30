@@ -15,6 +15,8 @@ class PreapprovalTest < Test::Unit::TestCase
     pp_response = @preapproval_request.preapproval(data)
     puts "preapproval code is #{pp_response['preapprovalKey']}"
 
+    assert pp_response.success?
+    assert_not_nil pp_response.preapproval_paypal_payment_url
     assert_not_nil pp_response['preapprovalKey']
   end
 
@@ -28,6 +30,8 @@ class PreapprovalTest < Test::Unit::TestCase
     pp_response = @preapproval_request.preapproval(data)
     puts "error message is #{pp_response.error_message}"
 
+    assert pp_response.success? == false
+    assert_nil pp_response.preapproval_paypal_payment_url
     assert_nil pp_response['preapprovalKey']
   end
 

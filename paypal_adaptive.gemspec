@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{paypal_adaptive}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tommy Chheng"]
-  s.date = %q{2009-12-28}
+  s.date = %q{2009-12-29}
   s.description = %q{Lightweight wrapper for Paypal's Adaptive Payments API.}
   s.email = %q{tommy.chheng@gmail.com}
   s.extra_rdoc_files = [
@@ -33,14 +33,17 @@ Gem::Specification.new do |s|
      "templates/paypal_ipn.rb",
      "test/data/invalid_chain_pay_request.json",
      "test/data/invalid_parallel_pay_request.json",
+     "test/data/invalid_preapproval.json",
      "test/data/invalid_simple_pay_request_1.json",
      "test/data/valid_chain_pay_request.json",
      "test/data/valid_parallel_pay_request.json",
+     "test/data/valid_preapproval.json",
      "test/data/valid_simple_pay_request_1.json",
      "test/helper.rb",
      "test/pay_request_schema_test.rb",
      "test/pay_request_test.rb",
-     "test/payment_details_test.rb"
+     "test/payment_details_test.rb",
+     "test/preapproval_test.rb"
   ]
   s.homepage = %q{http://github.com/tc/paypal_adaptive}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -51,7 +54,8 @@ Gem::Specification.new do |s|
     "test/helper.rb",
      "test/pay_request_schema_test.rb",
      "test/pay_request_test.rb",
-     "test/payment_details_test.rb"
+     "test/payment_details_test.rb",
+     "test/preapproval_test.rb"
   ]
 
   if s.respond_to? :specification_version then
