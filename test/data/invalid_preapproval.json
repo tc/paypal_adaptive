@@ -1,0 +1,12 @@
+{
+"returnUrl":"http://127.0.0.1:3000/payments/completed_payment_request",
+"requestEnvelope":{"errorLanguage":"en_US"},
+"currencyCode":"USD",
+"cancelUrl":"http://127.0.0.1:3000/payments/canceled_payment_request",
+ "actionType":"PAY",
+ "maxTotalAmountOfAllPayments": "1500.00",
+  "maxNumberOfPayments":"30",
+ "startingDate":"2010-07-13T07sdf00.000Z",
+ "endingDate":"2010-12-13T07dfg0000.000Z"
+}
+

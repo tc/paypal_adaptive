@@ -41,7 +41,8 @@ module PaypalAdaptive
     def preapproval(data)
       raise NoDataError unless data
 
-      call_api(data, "/AdaptivePayments/Preapproval")
+      response_data = call_api(data, "/AdaptivePayments/Preapproval")
+      PaypalAdaptive::Response.new(response_data, @env)
     end
 
     def preapproval_details(data)

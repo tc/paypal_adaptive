@@ -18,7 +18,15 @@ module PaypalAdaptive
         self['error']
       end
     end
-    
+
+    def error_message
+      if success?
+        return nil
+      else
+        self['error'].first['message'] rescue nil
+      end
+    end
+
     def approve_paypal_payment_url
       "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
     end
