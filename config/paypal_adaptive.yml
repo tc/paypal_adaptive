@@ -1,16 +1,16 @@
 development:
   environment: "sandbox"
-  username: "ppsell_1261697921_biz_api1.nextsprocket.com"
-  password: "1261697931"
-  signature: "AvNU3m01Oy0AUptTBZxo8FDcJtgVAdqSYYjaUANEYRyzCHacv4QvZ1fG"
-  application_id: "APP-80W284485P519543T"
+  username: "signupforuseratsandboxpaypal"
+  password: "signupforuseratsandboxpaypal"
+  signature: "signupforuseratsandboxpaypal"
+  application_id: "APP-TEST"
 
 test:
   environment: "sandbox"
-  username: "ppsell_1261697921_biz_api1.nextsprocket.com"
-  password: "1261697931"
-  signature: "AvNU3m01Oy0AUptTBZxo8FDcJtgVAdqSYYjaUANEYRyzCHacv4QvZ1fG"
-  application_id: "APP-80W284485P519543T"
+  username: "signupforuseratsandboxpaypal"
+  password: "signupforuseratsandboxpaypal"
+  signature: "signupforuseratsandboxpaypal"
+  application_id: "APP-TEST"
 
 production:
   environment: "production"
