@@ -8,7 +8,7 @@ class PayRequestSchemaTest < Test::Unit::TestCase
     @schema = File.open(@schema_filepath, "rb"){|f| JSON.parse(f.read)}
   end
   
-  def test_valid_simple_pay
+  def xtest_valid_simple_pay
     data_filepath =  "data/valid_simple_pay_request_1.json"
     data   = read_json_file(data_filepath)
     
