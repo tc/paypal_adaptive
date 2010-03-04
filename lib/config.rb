@@ -41,7 +41,10 @@ module PaypalAdaptive
           "X-PAYPAL-SECURITY-SIGNATURE" => config['signature'],
           "X-PAYPAL-APPLICATION-ID" => config['application_id'],
           "X-PAYPAL-REQUEST-DATA-FORMAT" => "JSON",
-          "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
+          "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON",
+          # These are apparently required for Create Account (TODO: Add to yml file / calculate IP)
+          "X-PAYPAL-SANDBOX-EMAIL-ADDRESS" => "andy_1246488382_biz_api1.lottay.com",
+          "X-PAYPAL-DEVICE-IPADDRESS" => "71.95.209.243"
         }
       end
     end

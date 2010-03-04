@@ -28,8 +28,4 @@ class PaymentDetailsTest < Test::Unit::TestCase
    assert_equal 'CREATED', response['status']
   end
 
-  def read_json_file(filepath)
-    File.open(filepath,   "rb"){|f| JSON.parse(f.read)}
-  end
-
 end

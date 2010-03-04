@@ -69,6 +69,13 @@ module PaypalAdaptive
       call_api(data, "/AdaptivePayments/Refund")
     end
 
+    def create_account(data)
+      raise NoDataError unless data
+
+      response_data = call_api(data, "/AdaptiveAccounts/CreateAccount")
+      PaypalAdaptive::Response.new(response_data, @env)
+    end
+
     def call_api(data, path)
       #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
       api_request_data = JSON.unparse(data) rescue data.to_json
