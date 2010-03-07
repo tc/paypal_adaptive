@@ -42,10 +42,12 @@ module PaypalAdaptive
           "X-PAYPAL-APPLICATION-ID" => config['application_id'],
           "X-PAYPAL-REQUEST-DATA-FORMAT" => "JSON",
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON",
-          # These are apparently required for Create Account (TODO: Add to yml file / calculate IP)
-          "X-PAYPAL-SANDBOX-EMAIL-ADDRESS" => "andy_1246488382_biz_api1.lottay.com",
-          "X-PAYPAL-DEVICE-IPADDRESS" => "71.95.209.243"
+          "X-PAYPAL-DEVICE-IPADDRESS" => "0.0.0.0"
         }
+
+        if config['environment'] == 'sandbox'
+          @headers.merge!("X-PAYPAL-SANDBOX-EMAIL-ADDRESS" => config['username'])
+        end
       end
     end
 
