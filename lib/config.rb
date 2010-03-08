@@ -45,9 +45,8 @@ module PaypalAdaptive
           "X-PAYPAL-DEVICE-IPADDRESS" => "0.0.0.0"
         }
 
-        if config['environment'] == 'sandbox'
-          @headers.merge!("X-PAYPAL-SANDBOX-EMAIL-ADDRESS" => "andy@lottay.com")
-        end
+        @headers["X-PAYPAL-SANDBOX-EMAIL-ADDRESS"] = config['sandbox_email'] if pp_env == :sandbox
+        
       end
     end
 

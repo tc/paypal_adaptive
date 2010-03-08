@@ -4,6 +4,7 @@ test:
   password: "1246488389"
   signature: "AHCkey.eVc0sNgG3SP.iiLKXx5EmALu43DmEPM6wmWg.snEFzyBrSfE2"
   application_id: "APP-80W284485P519543T"
+  sandbox_email: "andy@lottay.com"
 
 development:
   environment: "sandbox"
@@ -11,6 +12,7 @@ development:
   password: "signupforuseratsandboxpaypal"
   signature: "signupforuseratsandboxpaypal"
   application_id: "APP-TEST"
+  sandbox_email: "paypal_sandbox_email"
 
 production:
   environment: "production"
