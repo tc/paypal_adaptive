@@ -46,7 +46,7 @@ module PaypalAdaptive
         }
 
         if config['environment'] == 'sandbox'
-          @headers.merge!("X-PAYPAL-SANDBOX-EMAIL-ADDRESS" => config['username'])
+          @headers.merge!("X-PAYPAL-SANDBOX-EMAIL-ADDRESS" => "andy@lottay.com")
         end
       end
     end

@@ -16,6 +16,7 @@
   "emailAddress":"joetester@example.com",
   "requestEnvelope":{"errorLanguage":"en_US"},
   "currencyCode":"USD",
+  "registrationType":"WEB",
   "receiverList":{"receiver":[{"email":"testpp_1261697850_per@nextsprocket.com", "amount":"10.00"}]},
   "cancelUrl":"http://127.0.0.1:3000/payments/canceled_payment_request",
   "notificationURL":"http://127.0.0.1:3000/payments/ipn_notification"
