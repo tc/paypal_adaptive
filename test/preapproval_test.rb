@@ -12,6 +12,7 @@ class PreapprovalTest < Test::Unit::TestCase
     data_filepath =  "../test/data/valid_preapproval.json"
 
     data = read_json_file(data_filepath)
+
     pp_response = @preapproval_request.preapproval(data)
     puts "preapproval code is #{pp_response['preapprovalKey']}"
 

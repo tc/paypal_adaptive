@@ -70,6 +70,10 @@ Additionally, you can make calls to Paypal Adaptive's other APIs:
 Input is just a Hash just like the pay method. Refer to the Paypal manual for more details.
 
 ## Changelog
+0.1.0
+Fixed IPN rails metal template by sending the correct params back: ipn.send_back(env['rack.request.form_vars'])
+Thanks to github.com/JoN1oP for fixing this.
+
 0.0.5
 Added Preapproval preapproval_paypal_payment_url along with test case.
 
