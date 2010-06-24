@@ -48,14 +48,14 @@ Make the payment request:
     pay_response = pay_request.pay(data)
 
     if pay_response.success?
-      redirect_to pp_response.approve_paypal_payment_url
+      redirect_to pay_response.approve_paypal_payment_url
     else
       puts pay_response.errors.first['message']
       redirect_to failed_payment_url
     end
 
 ---
-Once the user goes to pp_response.approve_paypal_payment_url, they will be prompted to login to Paypal for payment.
+Once the user goes to pay_response.approve_paypal_payment_url, they will be prompted to login to Paypal for payment.
 
 Upon payment completion page, they will be redirected to http://testserver.com/payments/completed_payment_request.
 
