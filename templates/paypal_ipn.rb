@@ -8,7 +8,7 @@ class PaypalIpn
       params = request.params
       
       ipn = PaypalAdaptive::IpnNotification.new
-      ipn.send_back(env['QUERY_STRING'])
+      ipn.send_back(env['rack.request.form_vars'])
       if ipn.verified?
         #mark transaction as completed in your DB
         output = "Verified."
