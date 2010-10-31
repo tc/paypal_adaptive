@@ -26,12 +26,12 @@ module PaypalAdaptive
     end
 
     def load(rails_env)
-      config= YAML.load_file(@config_filepath)[rails_env]
+      config= YAML.load_file(@config_filepath)[rails_env] || {}
 
       if config["retain_requests_for_test"] == true
         @retain_requests_for_test = true
       else
-        pp_env = config['environment'].to_sym
+        pp_env = (config['environment'] || ENV['PAYPAL_ADAPTIVE_ENVIRONMENT']).to_sym
 
         @paypal_base_url = PAYPAL_BASE_URL_MAPPING[pp_env]
         @api_base_url = API_BASE_URL_MAPPING[pp_env]
