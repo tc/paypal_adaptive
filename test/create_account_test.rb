@@ -19,6 +19,7 @@ class CreateAccountTest < Test::Unit::TestCase
     assert pp_response["redirectURL"]
   end
 
+  # TODO: this test fails, seems you can create as many emails as you want
   def test_create_account_email_address_already_an_account
     data_filepath =  "../test/data/valid_create_account_request.json"
 
