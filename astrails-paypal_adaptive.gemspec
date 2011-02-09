@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     "README.markdown",
     "Rakefile",
     "VERSION",
+    "astrails-paypal_adaptive.gemspec",
     "config/paypal_adaptive.yml",
     "lib/config.rb",
     "lib/ipn_notification.rb",
