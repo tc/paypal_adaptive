@@ -4,13 +4,12 @@ require 'jsonschema'
 
 class PayRequestSchemaTest < Test::Unit::TestCase
   def setup
-    @schema_filepath = "../lib/pay_request_schema.json"
+    @schema_filepath = "./lib/pay_request_schema.json"
     @schema = File.open(@schema_filepath, "rb"){|f| JSON.parse(f.read)}
   end
   
   def xtest_valid_simple_pay
-    data_filepath =  "data/valid_simple_pay_request_1.json"
-    data   = read_json_file(data_filepath)
+    data   = read_json_file("valid_simple_pay_request_1")
     
     #receiverList not validating correctly, is it due to the schema or jsonschema parsing?
     assert_nothing_raised do 
@@ -19,8 +18,7 @@ class PayRequestSchemaTest < Test::Unit::TestCase
   end
   
   def test_invalid_simple_pay
-    data_filepath =  "data/invalid_simple_pay_request_1.json"
-    data   = read_json_file(data_filepath)
+    data   = read_json_file("invalid_simple_pay_request_1")
     
     assert_raise JSON::Schema::ValueError do 
       JSON::Schema.validate(data, @schema)

@@ -1,6 +1,5 @@
 require "time"
 require 'helper'
-require '../lib/request'
 
 class PreapprovalTest < Test::Unit::TestCase
   def setup
@@ -15,9 +14,7 @@ class PreapprovalTest < Test::Unit::TestCase
   def test_preapproval
     puts "-------"
     puts "valid test"
-    data_filepath =  "../test/data/valid_preapproval.json"
-
-    data = read_json_file(data_filepath)
+    data = read_json_file("valid_preapproval")
 		set_dates(data)
 
     pp_response = @preapproval_request.preapproval(data)
@@ -32,9 +29,7 @@ class PreapprovalTest < Test::Unit::TestCase
   def test_invalid_preapproval
     puts "-------"
     puts "invalid"
-    data_filepath =  "../test/data/invalid_preapproval.json"
-
-    data = read_json_file(data_filepath)
+    data = read_json_file("invalid_preapproval")
     pp_response = @preapproval_request.preapproval(data)
     puts "error message is #{pp_response.error_message}"
 
@@ -42,5 +37,4 @@ class PreapprovalTest < Test::Unit::TestCase
     assert_nil pp_response.preapproval_paypal_payment_url
     assert_nil pp_response['preapprovalKey']
   end
-
 end

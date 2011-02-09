@@ -1,5 +1,4 @@
 require 'helper'
-require '../lib/request'
 
 class PaymentDetailsTest < Test::Unit::TestCase
   def setup
@@ -10,9 +9,7 @@ class PaymentDetailsTest < Test::Unit::TestCase
   def test_payment_details
     puts "-------"
     puts "payment details"
-    data_filepath =  "../test/data/valid_chain_pay_request.json"
-
-    data = read_json_file(data_filepath)
+    data = read_json_file("valid_chain_pay_request")
     pp_response = @pay_request.pay(data)
     puts "redirect url to\n #{pp_response.approve_paypal_payment_url}"
 

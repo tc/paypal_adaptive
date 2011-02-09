@@ -17,7 +17,7 @@ module PaypalAdaptive
     def initialize(env=nil)
       if env
         #non-rails env
-        @config_filepath = "../config/paypal_adaptive.yml"
+        @config_filepath = "./config/paypal_adaptive.yml"
         load(env)
       else
         @config_filepath = File.join(Rails.root, "config/paypal_adaptive.yml")

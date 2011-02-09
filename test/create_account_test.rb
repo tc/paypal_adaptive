@@ -1,5 +1,4 @@
 require 'helper'
-require '../lib/request'
 
 class CreateAccountTest < Test::Unit::TestCase
   def setup
@@ -7,9 +6,7 @@ class CreateAccountTest < Test::Unit::TestCase
   end
 
   def test_valid_create_account
-    data_filepath =  "../test/data/valid_create_account_request.json"
-
-    data = read_json_file(data_filepath)
+    data = read_json_file("valid_create_account_request")
 
     data["emailAddress"] = "joetester_#{Time.now.to_i}@example.com"
 
@@ -21,9 +18,7 @@ class CreateAccountTest < Test::Unit::TestCase
 
   # TODO: this test fails, seems you can create as many emails as you want
   def test_create_account_email_address_already_an_account
-    data_filepath =  "../test/data/valid_create_account_request.json"
-
-    data = read_json_file(data_filepath)
+    data = read_json_file("valid_create_account_request")
 
     data["emailAddress"] = "joetester@example.com"
     pp_response = @account_request.create_account(data)
