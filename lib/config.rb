@@ -41,8 +41,12 @@ module PaypalAdaptive
           "X-PAYPAL-SECURITY-SIGNATURE" => config['signature'],
           "X-PAYPAL-APPLICATION-ID" => config['application_id'],
           "X-PAYPAL-REQUEST-DATA-FORMAT" => "JSON",
-          "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
+          "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON",
+          "X-PAYPAL-DEVICE-IPADDRESS" => "0.0.0.0"
         }
+
+        @headers["X-PAYPAL-SANDBOX-EMAIL-ADDRESS"] = config['sandbox_email'] if pp_env == :sandbox
+        
       end
     end
 

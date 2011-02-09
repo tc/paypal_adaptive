@@ -1,16 +1,18 @@
+test:
+  environment: "sandbox"
+  username: "andy_1246488382_biz_api1.lottay.com"
+  password: "1246488389"
+  signature: "AHCkey.eVc0sNgG3SP.iiLKXx5EmALu43DmEPM6wmWg.snEFzyBrSfE2"
+  application_id: "APP-80W284485P519543T"
+  sandbox_email: "andy@lottay.com"
+
 development:
   environment: "sandbox"
   username: "signupforuseratsandboxpaypal"
   password: "signupforuseratsandboxpaypal"
   signature: "signupforuseratsandboxpaypal"
   application_id: "APP-TEST"
-
-test:
-  environment: "sandbox"
-  username: "signupforuseratsandboxpaypal"
-  password: "signupforuseratsandboxpaypal"
-  signature: "signupforuseratsandboxpaypal"
-  application_id: "APP-TEST"
+  sandbox_email: "paypal_sandbox_email"
 
 production:
   environment: "production"

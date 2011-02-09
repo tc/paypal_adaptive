@@ -1,0 +1,22 @@
+{
+  "name":{"firstName":"Joe", "lastName":"Tester"},
+  "preferredLanguageCode":"en_US",
+  "address": {
+    "line1":"1234 Imaginary Ln",
+    "line2":"",
+    "city":"Ventura",
+    "state":"CA",
+    "postalCode":"93001",
+    "countryCode":"US"
+  },
+  "accountType":"Personal",
+  "citizenshipCountryCode":"US",
+  "contactPhoneNumber":"805-555-5555",
+  "createAccountWebOptions":{"returnUrl":"http://127.0.0.1:3000/payments/completed_payment_request"},
+  "emailAddress":"joetester@example.com",
+  "requestEnvelope":{"errorLanguage":"en_US"},
+  "currencyCode":"USD",
+  "registrationType":"WEB",
+  "cancelUrl":"http://127.0.0.1:3000/payments/canceled_payment_request",
+  "notificationURL":"http://127.0.0.1:3000/payments/ipn_notification"
+}

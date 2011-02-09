@@ -7,6 +7,17 @@ Before you need start, read the API manual https://www.x.com/docs/DOC-1531 and c
 It'll be invaluable for parameters and error messages. The gem keeps the request/response as hashes so you will have to
 read the manual to make the proper calls. I made a few test cases for further examples at http://github.com/tc/paypal_adaptive/tree/master/test/
 
+## Changes to the Lottay Version
+This branch adds support for PayPal Adaptive Accounts.  An Adaptive Accounts request looks very similar to the Pay Request.
+You simply post a hash of signup parameters to PayPal using the "create_account" method, and receive a URL to which you redirect the user to finish signup.
+
+See the unit tests in "create_account_test.rb" for a good example.
+
+###Installation Instructions
+Install the gem:
+    sudo gem install lottay-paypal_adaptive --source http://gemcutter.org
+In environment.rb:
+    require 'paypal_adaptive'
 
 ## HOWTO
 Create paypal_adaptive.yml to your config folder:
@@ -16,6 +27,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
+      sandbox_email: "paypal_account_email_with_your_sandbox_account"
 
     test:
       environment: "sandbox"
@@ -23,6 +35,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
+      sandbox_email: "paypal_account_email_with_your_sandbox_account"
 
     production:
       environment: "production"

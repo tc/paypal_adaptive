@@ -36,8 +36,4 @@ class PreapprovalTest < Test::Unit::TestCase
     assert_nil pp_response['preapprovalKey']
   end
 
-  def read_json_file(filepath)
-    File.open(filepath,   "rb"){|f| JSON.parse(f.read)}
-  end
-
 end

@@ -5,12 +5,12 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "paypal_adaptive"
+    gem.name = "lottay-paypal_adaptive"
     gem.summary = %Q{initial import}
     gem.description = %Q{Lightweight wrapper for Paypal's Adaptive Payments API.}
-    gem.email = "tommy.chheng@gmail.com"
-    gem.homepage = "http://github.com/tc/paypal_adaptive"
-    gem.authors = ["Tommy Chheng"]
+    gem.email = "rosshale@gmail.com"
+    gem.homepage = "http://github.com/lottay/paypal_adaptive"
+    gem.authors = ["Tommy Chheng", "Ross Hale"]
     gem.add_development_dependency "json", ">= 0"
     gem.add_development_dependency "jsonschema", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -49,7 +49,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "paypal_adaptive #{version}"
+  rdoc.title = "lottay-paypal_adaptive #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
