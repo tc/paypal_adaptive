@@ -77,13 +77,16 @@ module PaypalAdaptive
     end
 
     def call_api(data, path)
+      logger = data.delete(:logger) || data.delete("logger")
       #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
       api_request_data = JSON.unparse(data) rescue data.to_json
       url = URI.parse @@api_base_url
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = (url.scheme == 'https')
 
+      logger.request(path, api_request_data, @@headers) if logger
       resp, response_data = http.post(path, api_request_data, @@headers)
+      logger.response(resp, response_data) if logger
 
       JSON.parse(response_data)
     end
