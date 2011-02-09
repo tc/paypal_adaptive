@@ -7,6 +7,12 @@ Before you need start, read the API manual https://www.x.com/docs/DOC-1531 and c
 It'll be invaluable for parameters and error messages. The gem keeps the request/response as hashes so you will have to
 read the manual to make the proper calls. I made a few test cases for further examples at http://github.com/tc/paypal_adaptive/tree/master/test/
 
+## Changes to the Ross Hale Version
+This branch adds support for logging paypal requests and responses.
+Also "rake test" should work now.
+See the example below and PreapprovalTest#test_invalid_preapproval_with_logger.
+
+
 ## Changes to the Lottay Version
 This branch adds support for PayPal Adaptive Accounts.  An Adaptive Accounts request looks very similar to the Pay Request.
 You simply post a hash of signup parameters to PayPal using the "create_account" method, and receive a URL to which you redirect the user to finish signup.
@@ -15,7 +21,7 @@ See the unit tests in "create_account_test.rb" for a good example.
 
 ###Installation Instructions
 Install the gem:
-    sudo gem install lottay-paypal_adaptive --source http://gemcutter.org
+    sudo gem install astrails-paypal_adaptive --source http://gemcutter.org
 In environment.rb:
     require 'paypal_adaptive'
 
@@ -68,6 +74,25 @@ Make the payment request:
     end
 
 ---
+
+To log the request and response:
+    class Logger
+      def request(path, request_data, headers)
+        # TODO: save to db/file/whatever
+      end
+
+      def response(status, response_data)
+        # TODO: save to db/file/whatever
+      end
+
+      ...
+    end
+ 
+    logger = Logger.new
+    pay_response = pay_request.pay(data.merge(:logger => logger))
+
+---
+
 Once the user goes to pay_response.approve_paypal_payment_url, they will be prompted to login to Paypal for payment.
 
 Upon payment completion page, they will be redirected to http://testserver.com/payments/completed_payment_request.
@@ -83,6 +108,9 @@ Additionally, you can make calls to Paypal Adaptive's other APIs:
 Input is just a Hash just like the pay method. Refer to the Paypal manual for more details.
 
 ## Changelog
+0.1.1
+Added logging support.
+
 0.1.0
 Fixed IPN rails metal template by sending the correct params back: ipn.send_back(env['rack.request.form_vars'])
 Thanks to github.com/JoN1oP for fixing this.
