@@ -5,12 +5,12 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "lottay-paypal_adaptive"
+    gem.name = "astrails-paypal_adaptive"
     gem.summary = %Q{initial import}
     gem.description = %Q{Lightweight wrapper for Paypal's Adaptive Payments API.}
-    gem.email = "rosshale@gmail.com"
-    gem.homepage = "http://github.com/lottay/paypal_adaptive"
-    gem.authors = ["Tommy Chheng", "Ross Hale"]
+    gem.email = "boris@astrails.com"
+    gem.homepage = "http://github.com/astrails/paypal_adaptive"
+    gem.authors = ["Tommy Chheng", "Ross Hale", "Boris Nadion"]
     gem.add_development_dependency "json", ">= 0"
     gem.add_development_dependency "jsonschema", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
