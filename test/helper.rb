@@ -1,4 +1,5 @@
 require 'rubygems'
+require "yaml"
 require 'JSON'
 require 'test/unit'
 
