@@ -74,6 +74,9 @@ class PayRequestTest < Test::Unit::TestCase
     assert pp_response.success? == false
   end
   
+  def test_set_payment_options
+    #TODO
+  end
   
   def test_preapproval
     #TODO
