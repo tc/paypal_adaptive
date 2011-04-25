@@ -14,6 +14,8 @@ module PaypalAdaptive
       @@config ||= PaypalAdaptive::Config.new(@env)
       @@api_base_url ||= @@config.api_base_url
       @@headers ||= @@config.headers
+      @@ssl_cert_path ||= @@config.ssl_cert_path
+      @@ssl_cert_file ||= @@config.ssl_cert_file
     end
     
     def validate
@@ -74,7 +76,10 @@ module PaypalAdaptive
       api_request_data = JSON.unparse(data) rescue data.to_json
       url = URI.parse @@api_base_url
       http = Net::HTTP.new(url.host, 443)
-      http.use_ssl = (url.scheme == 'https')
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.ca_path = @@ssl_cert_path unless @@ssl_cert_path.nil?
+      http.ca_file = @@ssl_cert_file unless @@ssl_cert_file.nil?
 
       resp, response_data = http.post(path, api_request_data, @@headers)
 
