@@ -89,6 +89,11 @@ If you don't set ssl_cert_file then paypal_adaptive will check for certificates 
 this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
+0.2.0
+Thanks to seangaffney for set payment option support.
+Thanks to gaelian for https default cert support.
+Changed tests to use relative paths.
+
 0.1.0
 Fixed IPN rails metal template by sending the correct params back: ipn.send_back(env['rack.request.form_vars'])
 Thanks to github.com/JoN1oP for fixing this.
