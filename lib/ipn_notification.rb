@@ -21,7 +21,7 @@ module PaypalAdaptive
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
       http.ca_path = @@ssl_cert_path unless @@ssl_cert_path.nil?
-      http.ca_file = @@ssl_cert_file
+      http.ca_file = @@ssl_cert_file unless @@ssl_cert_file.nil?
       
       path = "#{@@paypal_base_url}/cgi-bin/webscr"
       resp, response_data = http.post(path, data)
