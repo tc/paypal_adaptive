@@ -91,7 +91,7 @@ this location exists, otherwise falling back to the cacert.pem file included wit
 ## Changelog
 0.2.0
 Thanks to seangaffney for set payment option support.
-Thanks to gaelian for https default cert support.
+Thanks to gaelian for ssl cert support.
 Changed tests to use relative paths.
 
 0.1.0
