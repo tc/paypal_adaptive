@@ -10,6 +10,7 @@ read the manual to make the proper calls. I made a few test cases for further ex
 
 ## HOWTO
 Create paypal_adaptive.yml to your config folder:
+
     development:
       environment: "sandbox"
       username: "sandbox_username"
@@ -75,6 +76,7 @@ Input is just a Hash just like the pay method. Refer to the Paypal manual for mo
 ### Certificate validation
 You can set the location of the .pem file you wish to use for SSL certificate validation in paypal_adaptive.yml
 for each environment, e.g.:
+
     development:
       environment: "sandbox"
       username: "sandbox_username"
