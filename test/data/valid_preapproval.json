@@ -5,7 +5,7 @@
 "cancelUrl":"http://127.0.0.1:3000/payments/canceled_payment_request",
  "maxTotalAmountOfAllPayments": "1500.00",
   "maxNumberOfPayments":"30",
- "startingDate":"2010-07-13T07:00:00.000Z",
- "endingDate":"2010-12-13T07:00:00.000Z" 
+ "startingDate":"2020-07-13T07:00:00.000Z",
+ "endingDate":"2020-12-13T07:00:00.000Z" 
 }
 
