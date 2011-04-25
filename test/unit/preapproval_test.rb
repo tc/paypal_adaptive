@@ -1,5 +1,4 @@
-require 'helper'
-require '../lib/request'
+require 'test_helper'
 
 class PreapprovalTest < Test::Unit::TestCase
   def setup
@@ -9,9 +8,10 @@ class PreapprovalTest < Test::Unit::TestCase
   def test_preapproval
     puts "-------"
     puts "valid test"
-    data_filepath =  "../test/data/valid_preapproval.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","valid_preapproval.json")
 
     data = read_json_file(data_filepath)
+    p data
 
     pp_response = @preapproval_request.preapproval(data)
     puts "preapproval code is #{pp_response['preapprovalKey']}"
@@ -25,7 +25,7 @@ class PreapprovalTest < Test::Unit::TestCase
   def test_invalid_preapproval
     puts "-------"
     puts "invalid"
-    data_filepath =  "../test/data/invalid_preapproval.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","invalid_preapproval.json")
 
     data = read_json_file(data_filepath)
     pp_response = @preapproval_request.preapproval(data)
@@ -37,7 +37,7 @@ class PreapprovalTest < Test::Unit::TestCase
   end
 
   def read_json_file(filepath)
-    File.open(filepath,   "rb"){|f| JSON.parse(f.read)}
+    File.open(filepath, "rb"){|f| JSON.parse(f.read)}
   end
 
 end

@@ -19,10 +19,10 @@ module PaypalAdaptive
     def initialize(env=nil, config_override=nil)
       if env
         #non-rails env
-        @config_filepath = "../config/paypal_adaptive.yml"
+        @config_filepath = File.join(File.dirname(__FILE__), "..", "config", "paypal_adaptive.yml")
         load(env, config_override)
       else
-        @config_filepath = File.join(Rails.root, "config/paypal_adaptive.yml")
+        @config_filepath = File.join(Rails.root, "config", "paypal_adaptive.yml")
         load(Rails.env, config_override)
       end
     end
@@ -49,7 +49,7 @@ module PaypalAdaptive
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
         }
 
-        if ! config['ssl_cert_file'].nil? && File.exists?(config['ssl_cert_file'])
+        if config['ssl_cert_file'] && config['ssl_cert_file'].length > 0
           @ssl_cert_file = config['ssl_cert_file']
         elsif File.exists?("/etc/ssl/certs")
           @ssl_cert_path = "/etc/ssl/certs"

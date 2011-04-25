@@ -1,5 +1,4 @@
-require 'helper'
-require '../lib/request'
+require 'test_helper'
 
 class PaymentDetailsTest < Test::Unit::TestCase
   def setup
@@ -10,7 +9,7 @@ class PaymentDetailsTest < Test::Unit::TestCase
   def test_payment_details
     puts "-------"
     puts "payment details"
-    data_filepath =  "../test/data/valid_chain_pay_request.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","valid_chain_pay_request.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)

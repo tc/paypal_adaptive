@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'rake'
-
+require 'rake/testtask'
 
 begin
   require 'jeweler'
@@ -20,13 +20,6 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
-end
-
 begin
   require 'rcov/rcovtask'
   Rcov::RcovTask.new do |test|
@@ -40,9 +33,16 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
-
 task :default => :test
+
+task :test => %w(test:units)
+namespace :test do
+  desc "run unit tests"
+  Rake::TestTask.new(:units) do |test|
+    test.libs << 'lib' << 'test'
+    test.test_files = FileList["test/unit/*_test.rb", "test/unit/*/*_test.rb"]
+  end
+end
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

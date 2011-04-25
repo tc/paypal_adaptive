@@ -1,5 +1,4 @@
-require 'helper'
-require '../lib/request'
+require 'test_helper'
 
 class PayRequestTest < Test::Unit::TestCase
   def setup
@@ -10,7 +9,7 @@ class PayRequestTest < Test::Unit::TestCase
     puts "-------"
     puts "simple"
 
-    data_filepath =  "../test/data/valid_simple_pay_request_1.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","valid_simple_pay_request_1.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
@@ -20,7 +19,7 @@ class PayRequestTest < Test::Unit::TestCase
   end
   
   def test_invalid_simple_pay
-    data_filepath =  "../test/data/invalid_simple_pay_request_1.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","invalid_simple_pay_request_1.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
@@ -31,7 +30,7 @@ class PayRequestTest < Test::Unit::TestCase
   def test_valid_chain_pay
     puts "-------"
     puts "chain"
-    data_filepath =  "../test/data/valid_chain_pay_request.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","valid_chain_pay_request.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
@@ -45,7 +44,7 @@ class PayRequestTest < Test::Unit::TestCase
   end
 
   def test_invalid_chain_pay
-    data_filepath =  "../test/data/invalid_chain_pay_request.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","invalid_chain_pay_request.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
@@ -57,7 +56,7 @@ class PayRequestTest < Test::Unit::TestCase
     puts "-------"
     puts "parallel"
 
-    data_filepath =  "../test/data/valid_chain_pay_request.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","valid_parallel_pay_request.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
@@ -66,7 +65,7 @@ class PayRequestTest < Test::Unit::TestCase
   end
 
   def test_invalid_parallel_pay
-    data_filepath =  "../test/data/invalid_parallel_pay_request.json"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","invalid_parallel_pay_request.json")
 
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
