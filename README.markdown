@@ -16,6 +16,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
+      ssl_cert_file:
 
     test:
       environment: "sandbox"
@@ -23,6 +24,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
+      ssl_cert_file:
 
     production:
       environment: "production"
@@ -30,6 +32,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "my_production_password"
       signature: "my_production_signature"
       application_id: "my_production_app_id"
+      ssl_cert_file:
 
 Make the payment request:
 
@@ -68,6 +71,20 @@ Additionally, you can make calls to Paypal Adaptive's other APIs:
     payment_details, preapproval, preapproval_details, cancel_preapproval, convert_currency, refund
 
 Input is just a Hash just like the pay method. Refer to the Paypal manual for more details.
+
+### Certificate validation
+You can set the location of the .pem file you wish to use for SSL certificate validation in paypal_adaptive.yml
+for each environment, e.g.:
+    development:
+      environment: "sandbox"
+      username: "sandbox_username"
+      password: "sandbox_password"
+      signature: "sandbox_signature"
+      application_id: "sandbox_app_id"
+      ssl_cert_file: "/path/to/your/cacert.pem"
+
+If you don't set ssl_cert_file then paypal_adaptive will check for certificates in /etc/ssl/certs if
+this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
 0.1.0
