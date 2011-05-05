@@ -9,7 +9,7 @@ module PaypalAdaptive
   end
 
   class Request
-    def initialize(env = nil)
+    def initialize(env)
       @env = env
       @config = PaypalAdaptive::Config.new(@env)
       @api_base_url = @config.api_base_url

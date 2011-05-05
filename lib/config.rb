@@ -21,8 +21,8 @@ module PaypalAdaptive
       load(env, config_override)
     end
 
-    def load(rails_env, config_override)
-      config = YAML.load_file(@config_filepath)[rails_env]
+    def load(env, config_override)
+      config = YAML.load_file(@config_filepath)[env]
       config.merge!(config_override) unless config_override.nil?
 
       if config["retain_requests_for_test"] == true
