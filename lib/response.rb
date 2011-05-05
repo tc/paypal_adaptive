@@ -1,8 +1,8 @@
 module PaypalAdaptive
   class Response < Hash    
     def initialize(response, env=nil)
-      @@config ||= PaypalAdaptive::Config.new(env)
-      @@paypal_base_url ||= @@config.paypal_base_url
+      @config = PaypalAdaptive::Config.new(env)
+      @paypal_base_url = @config.paypal_base_url
       
       self.merge!(response)
     end
@@ -28,11 +28,11 @@ module PaypalAdaptive
     end
 
     def approve_paypal_payment_url
-      self['payKey'].nil? ? nil : "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
+      self['payKey'].nil? ? nil : "#{@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
     end
 
     def preapproval_paypal_payment_url
-      self['preapprovalKey'].nil? ? nil : "#{@@paypal_base_url}/webscr?cmd=_ap-preapproval&preapprovalkey=#{self['preapprovalKey']}"
+      self['preapprovalKey'].nil? ? nil : "#{@paypal_base_url}/webscr?cmd=_ap-preapproval&preapprovalkey=#{self['preapprovalKey']}"
     end
   end
 end

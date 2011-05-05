@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'psych'
 require 'rake'
 require 'rake/testtask'
 

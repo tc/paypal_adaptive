@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    paypal_adaptive (0.2.0)
+      paypal_adaptive
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.5.1)
+    jsonschema (2.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  json
+  jsonschema
+  paypal_adaptive!
