@@ -54,7 +54,7 @@ module PaypalAdaptive
         elsif File.exists?("/etc/ssl/certs")
           @ssl_cert_path = "/etc/ssl/certs"
         else
-          @ssl_cert_file = "../cacert.pem"
+          @ssl_cert_file = File.join(File.dirname(__FILE__), "..", "cacert.pem")
         end
       end
     end
