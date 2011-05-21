@@ -89,6 +89,9 @@ If you don't set ssl_cert_file then paypal_adaptive will check for certificates 
 this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
+0.2.1
+Fixed SSL bug. Thanks gaelian.
+
 0.2.0
 Thanks to seangaffney for set payment option support.
 Thanks to gaelian for ssl cert support.
