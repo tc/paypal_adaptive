@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{paypal_adaptive}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tommy Chheng"]
-  s.date = %q{2011-04-25}
+  s.date = %q{2011-05-21}
   s.description = %q{Lightweight wrapper for Paypal's Adaptive Payments API.}
   s.email = %q{tommy.chheng@gmail.com}
   s.extra_rdoc_files = [
@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
     "lib/response.rb",
     "paypal_adaptive.gemspec",
     "templates/paypal_ipn.rb",
-    "test/data/dummy_cacert.pem",
     "test/data/invalid_chain_pay_request.json",
     "test/data/invalid_parallel_pay_request.json",
     "test/data/invalid_preapproval.json",
