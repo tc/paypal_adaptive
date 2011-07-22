@@ -35,6 +35,9 @@ Create paypal_adaptive.yml to your config folder:
       application_id: "my_production_app_id"
       ssl_cert_file:
 
+You can also use ENV variables when specifying your configuration. eg.
+```<%= ENV[''paypal.username'] %>```
+
 Make the payment request:
 
     pay_request = PaypalAdaptive::Request.new
@@ -89,6 +92,9 @@ If you don't set ssl_cert_file then paypal_adaptive will check for certificates 
 this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
+0.2.2
+Added support for ERB in the config file. Thanks DanielVartanov.
+
 0.2.1
 Fixed SSL bug. Thanks gaelian.
 
