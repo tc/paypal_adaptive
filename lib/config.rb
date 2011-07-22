@@ -1,4 +1,5 @@
 require 'yaml'
+require 'erb'
 
 module PaypalAdaptive
   class Config
@@ -27,8 +28,8 @@ module PaypalAdaptive
       end
     end
 
-    def load(rails_env, config_override)
-      config = YAML.load_file(@config_filepath)[rails_env]
+    def load(environment, config_override)
+      config = YAML.load(ERB.new(File.new(@config_filepath).read).result)[environment]
       config.merge!(config_override) unless config_override.nil?
 
       if config["retain_requests_for_test"] == true

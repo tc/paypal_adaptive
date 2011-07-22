@@ -21,3 +21,11 @@ production:
   signature: "my_production_signature"
   application_id: "my_production_app_id"
   ssl_cert_file:
+
+with_erb_tags:
+  environment: "sandbox"
+  username: <%= ENV['paypal.username'] %>
+  password: <%= ENV['paypal.password'] %>
+  signature: "signupforuseratsandboxpaypal"
+  application_id: "APP-TEST"
+  ssl_cert_file:
