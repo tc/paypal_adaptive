@@ -44,7 +44,8 @@ module PaypalAdaptive
     def payment_details(data)
       raise NoDataError unless data
 
-      call_api(data, "/AdaptivePayments/PaymentDetails")
+      response_data = call_api(data, "/AdaptivePayments/PaymentDetails")
+      PaypalAdaptive::Response.new(response_data, @env)
     end
 
     def preapproval(data)
@@ -57,25 +58,29 @@ module PaypalAdaptive
     def preapproval_details(data)
       raise NoDataError unless data
 
-      call_api(data, "/AdaptivePayments/PreapprovalDetails")
+      response_data = call_api(data, "/AdaptivePayments/PreapprovalDetails")
+      PaypalAdaptive::Response.new(response_data, @env)
     end
 
     def cancel_preapproval(data)
       raise NoDataError unless data
 
-      call_api(data, "/AdaptivePayments/CancelPreapproval")
+      response_data = call_api(data, "/AdaptivePayments/CancelPreapproval")
+      PaypalAdaptive::Response.new(response_data, @env)
     end
 
     def convert_currency(data)
       raise NoDataError unless data
 
-      call_api(data, "/AdaptivePayments/ConvertCurrency")
+      response_data = call_api(data, "/AdaptivePayments/ConvertCurrency")
+      PaypalAdaptive::Response.new(response_data, @env)
     end
 
     def refund(data)
       raise NoDataError unless data
 
-      call_api(data, "/AdaptivePayments/Refund")
+      response_data = call_api(data, "/AdaptivePayments/Refund")
+      PaypalAdaptive::Response.new(response_data, @env)
     end
 
     def call_api(data, path)
