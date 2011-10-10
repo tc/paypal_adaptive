@@ -9,8 +9,9 @@ Gem::Specification.new do |s|
   s.authors     = ["Tommy Chheng"]
   s.email       = ["tommy.chheng@gmail.com"]
   s.homepage    = "http://github.com/tc/paypal_adaptive"
-  s.description = %q{Lightweight wrapper for Paypal's Adaptive Payments API}
-  
+  s.summary     = "Lightweight wrapper for Paypal's Adaptive Payments API"
+  s.description = "Lightweight wrapper for Paypal's Adaptive Payments API"
+
   s.add_dependency("json", "~>1.6.0")
   s.add_dependency("jsonschema", "~>2.0.0")
   s.add_dependency("rake", "~>0.8")
