@@ -31,6 +31,7 @@ module PaypalAdaptive
     def load(environment, config_override)
       config = YAML.load(ERB.new(File.new(@config_filepath).read).result)[environment]
       config.merge!(config_override) unless config_override.nil?
+      raise "Could not load settings from config file" unless config
 
       if config["retain_requests_for_test"] == true
         @retain_requests_for_test = true
