@@ -12,6 +12,7 @@ begin
     gem.email = "tommy.chheng@gmail.com"
     gem.homepage = "http://github.com/tc/paypal_adaptive"
     gem.authors = ["Tommy Chheng"]
+    gem.add_development_dependency "rake", ">0.8"
     gem.add_development_dependency "json", ">= 0"
     gem.add_development_dependency "jsonschema", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings

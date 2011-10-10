@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{paypal_adaptive}
-  s.version = "0.2.1"
+  s.name = "paypal_adaptive"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tommy Chheng"]
-  s.date = %q{2011-05-21}
-  s.description = %q{Lightweight wrapper for Paypal's Adaptive Payments API.}
-  s.email = %q{tommy.chheng@gmail.com}
+  s.date = "2011-10-10"
+  s.description = "Lightweight wrapper for Paypal's Adaptive Payments API."
+  s.email = "tommy.chheng@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.markdown"
@@ -46,30 +46,34 @@ Gem::Specification.new do |s|
     "test/unit/payment_details_test.rb",
     "test/unit/preapproval_test.rb"
   ]
-  s.homepage = %q{http://github.com/tc/paypal_adaptive}
+  s.homepage = "http://github.com/tc/paypal_adaptive"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{initial import}
-  s.test_files = [
-    "test/test_helper.rb",
-    "test/unit/config_test.rb",
-    "test/unit/pay_request_schema_test.rb",
-    "test/unit/pay_request_test.rb",
-    "test/unit/payment_details_test.rb",
-    "test/unit/preapproval_test.rb"
-  ]
+  s.rubygems_version = "1.8.10"
+  s.summary = "initial import"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<paypal_adaptive>, [">= 0"])
+      s.add_development_dependency(%q<json>, [">= 0"])
+      s.add_development_dependency(%q<jsonschema>, [">= 0"])
+      s.add_development_dependency(%q<rake>, ["> 0.8"])
       s.add_development_dependency(%q<json>, [">= 0"])
       s.add_development_dependency(%q<jsonschema>, [">= 0"])
     else
+      s.add_dependency(%q<paypal_adaptive>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<jsonschema>, [">= 0"])
+      s.add_dependency(%q<rake>, ["> 0.8"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<jsonschema>, [">= 0"])
     end
   else
+    s.add_dependency(%q<paypal_adaptive>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<jsonschema>, [">= 0"])
+    s.add_dependency(%q<rake>, ["> 0.8"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<jsonschema>, [">= 0"])
   end
