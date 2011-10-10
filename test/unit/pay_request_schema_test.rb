@@ -1,6 +1,4 @@
 require 'test_helper'
-require 'json'
-require 'jsonschema'
 
 class PayRequestSchemaTest < Test::Unit::TestCase
   def setup

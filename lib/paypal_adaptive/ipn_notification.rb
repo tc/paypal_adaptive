@@ -1,7 +1,6 @@
 require 'net/http'
 require 'net/https'
 require 'json'
-require 'config'
 
 module PaypalAdaptive
   class IpnNotification

@@ -1,8 +1,6 @@
 require 'json'
-require 'config'
 require 'net/http'
 require 'net/https'
-require 'response'
 
 module PaypalAdaptive
   class NoDataError < Exception
@@ -76,6 +74,12 @@ module PaypalAdaptive
       raise NoDataError unless data
 
       call_api(data, "/AdaptivePayments/Refund")
+    end
+
+    def execute_payment(data)
+      raise NoDataError unless data
+
+      call_api(data, "/AdaptivePayments/ExecutePayment")
     end
 
     def call_api(data, path)
