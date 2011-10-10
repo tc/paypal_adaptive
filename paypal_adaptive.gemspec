@@ -17,6 +17,8 @@ Gem::Specification.new do |s|
     "README.markdown"
   ]
   s.files = [
+    "Gemfile",
+    "Gemfile.lock",
     "LICENSE",
     "README.markdown",
     "Rakefile",
@@ -61,6 +63,11 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rake>, ["> 0.8"])
       s.add_development_dependency(%q<json>, [">= 0"])
       s.add_development_dependency(%q<jsonschema>, [">= 0"])
+      s.add_development_dependency(%q<rake>, ["> 0.8"])
+      s.add_development_dependency(%q<jsonschema>, [">= 0"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
+      s.add_runtime_dependency(%q<jsonschema>, [">= 0"])
+      s.add_development_dependency(%q<rake>, ["> 0.8"])
     else
       s.add_dependency(%q<paypal_adaptive>, [">= 0"])
       s.add_dependency(%q<json>, [">= 0"])
@@ -68,6 +75,11 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rake>, ["> 0.8"])
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<jsonschema>, [">= 0"])
+      s.add_dependency(%q<rake>, ["> 0.8"])
+      s.add_dependency(%q<jsonschema>, [">= 0"])
+      s.add_dependency(%q<json>, [">= 0"])
+      s.add_dependency(%q<jsonschema>, [">= 0"])
+      s.add_dependency(%q<rake>, ["> 0.8"])
     end
   else
     s.add_dependency(%q<paypal_adaptive>, [">= 0"])
@@ -76,6 +88,11 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rake>, ["> 0.8"])
     s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<jsonschema>, [">= 0"])
+    s.add_dependency(%q<rake>, ["> 0.8"])
+    s.add_dependency(%q<jsonschema>, [">= 0"])
+    s.add_dependency(%q<json>, [">= 0"])
+    s.add_dependency(%q<jsonschema>, [">= 0"])
+    s.add_dependency(%q<rake>, ["> 0.8"])
   end
 end
 
