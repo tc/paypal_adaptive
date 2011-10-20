@@ -41,6 +41,10 @@ module PaypalAdaptive
       wrap_post(data, "/AdaptivePayments/GetPaymentOptions")
     end
 
+    def get_shipping_addresses(data)
+      wrap_post(data, "/AdaptivePayments/GetShippingAddresses")
+    end
+
     def preapproval(data)
       wrap_post(data, "/AdaptivePayments/Preapproval")
     end
