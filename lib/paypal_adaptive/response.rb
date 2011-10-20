@@ -27,8 +27,14 @@ module PaypalAdaptive
       end
     end
 
-    def approve_paypal_payment_url
-      self['payKey'].nil? ? nil : "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
+    def approve_paypal_payment_url(type=nil)
+      if self['payKey'].nil?
+        return nil
+      elsif ['mini', 'embedded'].include?(type.to_s)
+        return "#{@@paypal_base_url}/webapps/adaptivepayment/flow/pay?expType=#{type.to_s}&paykey=#{self['payKey']}"
+      end
+      
+      "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
     end
 
     def preapproval_paypal_payment_url
