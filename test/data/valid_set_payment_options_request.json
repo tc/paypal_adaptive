@@ -1,0 +1,29 @@
+{
+  "payKey": "REPLACE-WITH-VALID-PAY-KEY",
+
+  "senderOptions": {
+    "requireShippingAddressSelection": "true"
+  },
+
+  "receiverOptions": {
+    "invoiceData": {
+      "item": [
+        {
+          "identifier": "1",
+          "name": "Sample Product",
+          "itemCount": "1",
+          "itemPrice": "10.00",
+          "price": "10.00"
+        }
+      ],
+      "totalShipping": "0.00"
+    },
+    "receiver": {
+      "email": "testpp_1261697850_per@nextsprocket.com"
+    }
+  },
+
+  "requestEnvelope": {
+    "errorLanguage": "en_US"
+  }
+}
