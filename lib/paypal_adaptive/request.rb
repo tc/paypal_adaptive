@@ -29,12 +29,16 @@ module PaypalAdaptive
       wrap_post(data, "/AdaptivePayments/Pay")
     end
 
+    def payment_details(data)
+      wrap_post(data, "/AdaptivePayments/PaymentDetails")
+    end
+
     def set_payment_options(data)
       wrap_post(data, "/AdaptivePayments/SetPaymentOptions")
     end
 
-    def payment_details(data)
-      wrap_post(data, "/AdaptivePayments/PaymentDetails")
+    def get_payment_options(data)
+      wrap_post(data, "/AdaptivePayments/GetPaymentOptions")
     end
 
     def preapproval(data)
