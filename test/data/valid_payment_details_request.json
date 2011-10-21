@@ -1,0 +1,7 @@
+{
+  "payKey": "REPLACE-WITH-VALID-PAY-KEY",
+
+  "requestEnvelope": {
+    "errorLanguage": "en_US"
+  }
+}
