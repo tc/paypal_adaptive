@@ -92,6 +92,9 @@ If you don't set ssl_cert_file then paypal_adaptive will check for certificates 
 this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
+0.2.4
+Support for embedded payments. Issue #21 thanks rafaelivan. Shipping address, wrapper methods has return response object. Issue #22 thanks tsmango.
+
 0.2.3
 Using bundler for gem creation. Moved all code to paypal_adaptive dir.  Added ExecutePayment call to request. Thanks Roger Neel.
 
