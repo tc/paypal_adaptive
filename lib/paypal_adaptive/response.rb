@@ -30,7 +30,7 @@ module PaypalAdaptive
     def approve_paypal_payment_url(type=nil)
       if self['payKey'].nil?
         return nil
-      elsif ['mini', 'embedded'].include?(type.to_s)
+      elsif ['mini', 'light'].include?(type.to_s)
         return "#{@@paypal_base_url}/webapps/adaptivepayment/flow/pay?expType=#{type.to_s}&paykey=#{self['payKey']}"
       end
       
