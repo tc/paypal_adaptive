@@ -92,6 +92,9 @@ If you don't set ssl_cert_file then paypal_adaptive will check for certificates 
 this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
+0.2.5
+Fix for embedded payments, thanks rafaelivan.  Fix for Rails 3.1.1, thanks synth.
+
 0.2.4
 Support for embedded payments. Issue #21 thanks rafaelivan. Shipping address, wrapper methods has return response object. Issue #22 thanks tsmango.
 
