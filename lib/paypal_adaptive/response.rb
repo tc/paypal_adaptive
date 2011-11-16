@@ -40,5 +40,10 @@ module PaypalAdaptive
     def preapproval_paypal_payment_url
       self['preapprovalKey'].nil? ? nil : "#{@@paypal_base_url}/webscr?cmd=_ap-preapproval&preapprovalkey=#{self['preapprovalKey']}"
     end
+
+    # workaround for rails 3.1.1, see https://github.com/tc/paypal_adaptive/issues/23
+    def nested_under_indifferent_access
+      self
+    end
   end
 end
