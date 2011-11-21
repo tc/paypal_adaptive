@@ -36,6 +36,18 @@ class PreapprovalTest < Test::Unit::TestCase
     assert_nil pp_response['preapprovalKey']
   end
 
+  def test_invalid_preapproval_with_bad_credit_information
+    puts "-------"
+    puts "invalid"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","invalid_preapproval_error_execstatus.json")
+
+    data = read_json_file(data_filepath)
+    pp_response = @preapproval_request.preapproval(data)
+    puts "error message is #{pp_response.error_message}"
+
+    assert pp_response.success? == false
+  end
+
   def read_json_file(filepath)
     File.open(filepath, "rb"){|f| JSON.parse(f.read)}
   end
