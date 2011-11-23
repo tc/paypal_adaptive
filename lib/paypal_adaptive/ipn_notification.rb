@@ -23,7 +23,7 @@ module PaypalAdaptive
       http.ca_file = @@ssl_cert_file unless @@ssl_cert_file.nil?
       
       path = "#{@@paypal_base_url}/cgi-bin/webscr"
-      resp, response_data = http.post(path, data)
+      response_data = http.post(path, data).body
       
       @verified = response_data == "VERIFIED"
     end
