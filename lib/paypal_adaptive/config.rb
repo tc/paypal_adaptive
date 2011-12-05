@@ -42,6 +42,9 @@ module PaypalAdaptive
         @ssl_cert_file = nil
         @paypal_base_url = PAYPAL_BASE_URL_MAPPING[pp_env]
         @api_base_url = API_BASE_URL_MAPPING[pp_env]
+        
+        # http.rb requires headers to be strings. Protect against ints in paypal_adaptive.yml
+        config.update(config){ |key,v| v.to_s }
         @headers = {
           "X-PAYPAL-SECURITY-USERID" => config['username'],
           "X-PAYPAL-SECURITY-PASSWORD" => config['password'],
