@@ -48,6 +48,18 @@ class PreapprovalTest < Test::Unit::TestCase
     assert pp_response.success? == false
   end
 
+  def test_erred_preapproval_payment_message
+    puts "-------"
+    puts "invalid"
+    data_filepath =  File.join(File.dirname(__FILE__),"..", "data","invalid_preapproval_payment.json")
+
+    data = read_json_file(data_filepath)
+    pp_response = @preapproval_request.preapproval(data)
+    puts "error message is #{pp_response.error_message}"
+
+    assert pp_response.error_message == "This transaction cannot be processed. Please enter a valid credit card number and type"
+  end
+
   def read_json_file(filepath)
     File.open(filepath, "rb"){|f| JSON.parse(f.read)}
   end

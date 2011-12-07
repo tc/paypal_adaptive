@@ -1,0 +1,22 @@
+{
+  "responseEnvelope":{
+    "timestamp":"2011-11-28T08:02:09.070-08:00",
+    "ack":"Success",
+    "correlationId":"XXXXXXXXXXXXX",
+    "build":"2279004"},
+  "payKey":"XX-XXXXXXXXXXXXXXXXX",
+  "paymentExecStatus":"ERROR",
+  "payErrorList":{
+    "payError":[{
+      "receiver":{
+        "amount":"25.0",
+        "email":"test@test.test"},
+      "error":{
+        "errorId":"580036",
+        "domain":"PLATFORM",
+        "severity":"Error",
+        "category":"Application",
+        "message":"This transaction cannot be processed. Please enter a valid credit card number and type"}
+    }]
+  }
+}

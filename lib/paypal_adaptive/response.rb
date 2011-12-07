@@ -16,16 +16,14 @@ module PaypalAdaptive
       if success?
         return []
       else
-        self['error']
+        errors = self['error']
+        errors ||= self['payErrorList']['payError'].collect { |e| e['error'] } rescue nil
+        errors
       end
     end
 
     def error_message
-      if success?
-        return nil
-      else
-        self['error'].first['message'] rescue nil
-      end
+      message = errors.first['message'] rescue nil
     end
 
     def approve_paypal_payment_url(type=nil)
