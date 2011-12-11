@@ -12,8 +12,8 @@ module PaypalAdaptive
         !(self['paymentExecStatus'].to_s =~ /^ERROR$/i)
     end
     
-    def correlationid
-       return self['responseEnvelope']['ack'].to_s
+    def return_correlationid
+       return self['responseEnvelope']['correlationId'].to_s
     end
     
     def errors
