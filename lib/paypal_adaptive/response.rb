@@ -1,8 +1,8 @@
 module PaypalAdaptive
   class Response < Hash    
     def initialize(response, env=nil)
-      @@config ||= PaypalAdaptive::Config.new(env)
-      @@paypal_base_url ||= @@config.paypal_base_url
+      config = PaypalAdaptive::Config.new(env)
+      @paypal_base_url = config.paypal_base_url
       
       self.merge!(response)
     end
@@ -30,14 +30,14 @@ module PaypalAdaptive
       if self['payKey'].nil?
         return nil
       elsif ['mini', 'light'].include?(type.to_s)
-        return "#{@@paypal_base_url}/webapps/adaptivepayment/flow/pay?expType=#{type.to_s}&paykey=#{self['payKey']}"
+        return "#{@paypal_base_url}/webapps/adaptivepayment/flow/pay?expType=#{type.to_s}&paykey=#{self['payKey']}"
       end
       
-      "#{@@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
+      "#{@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
     end
 
     def preapproval_paypal_payment_url
-      self['preapprovalKey'].nil? ? nil : "#{@@paypal_base_url}/webscr?cmd=_ap-preapproval&preapprovalkey=#{self['preapprovalKey']}"
+      self['preapprovalKey'].nil? ? nil : "#{@paypal_base_url}/webscr?cmd=_ap-preapproval&preapprovalkey=#{self['preapprovalKey']}"
     end
 
     # workaround for rails 3.1.1, see https://github.com/tc/paypal_adaptive/issues/23

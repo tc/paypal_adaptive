@@ -9,20 +9,20 @@ module PaypalAdaptive
   class Request
     def initialize(env = nil)
       @env = env
-      @@config ||= PaypalAdaptive::Config.new(@env)
-      @@api_base_url ||= @@config.api_base_url
-      @@headers ||= @@config.headers
-      @@ssl_cert_path ||= @@config.ssl_cert_path
-      @@ssl_cert_file ||= @@config.ssl_cert_file
+      config = PaypalAdaptive.config(env)
+      @api_base_url = config.api_base_url
+      @headers = config.headers
+      @ssl_cert_path = config.ssl_cert_path
+      @ssl_cert_file = config.ssl_cert_file
     end
 
     def validate
       #TODO the receiverList field not validating properly
 
-      # @@schema_filepath = "../lib/pay_request_schema.json"
-      # @@schema = File.open(@@schema_filepath, "rb"){|f| JSON.parse(f.read)}
+      # @schema_filepath = "../lib/pay_request_schema.json"
+      # @schema = File.open(@schema_filepath, "rb"){|f| JSON.parse(f.read)}
       # see page 42 of PP Adaptive Payments PDF for explanation of all fields.
-      #JSON::Schema.validate(@data, @@schema)
+      #JSON::Schema.validate(@data, @schema)
     end
 
     def pay(data)
@@ -78,14 +78,14 @@ module PaypalAdaptive
     def post(data, path)
       #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
       api_request_data = JSON.unparse(data) rescue data.to_json
-      url = URI.parse @@api_base_url
+      url = URI.parse @api_base_url
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-      http.ca_path = @@ssl_cert_path unless @@ssl_cert_path.nil?
-      http.ca_file = @@ssl_cert_file unless @@ssl_cert_file.nil?
+      http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
+      http.ca_file = @ssl_cert_file unless @ssl_cert_file.nil?
 
-      response_data = http.post(path, api_request_data, @@headers).body
+      response_data = http.post(path, api_request_data, @headers).body
 
       JSON.parse(response_data)
     end
