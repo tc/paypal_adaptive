@@ -15,7 +15,7 @@ class PayRequestTest < Test::Unit::TestCase
     pp_response = @pay_request.pay(data)
 
     puts "redirect url to\n #{pp_response.approve_paypal_payment_url}"
-    assert pp_response.success?
+    assert_equal true, pp_response.success?
   end
   
   def test_invalid_simple_pay
@@ -24,7 +24,7 @@ class PayRequestTest < Test::Unit::TestCase
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
     puts pp_response.errors
-    assert pp_response.success? == false
+    assert_equal false, pp_response.success?
   end
   
   def test_valid_chain_pay
@@ -40,7 +40,7 @@ class PayRequestTest < Test::Unit::TestCase
       puts pp_response.errors
     end
     
-    assert pp_response.success?
+    assert_equal true, pp_response.success?
   end
 
   def test_invalid_chain_pay
@@ -49,7 +49,7 @@ class PayRequestTest < Test::Unit::TestCase
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
     puts pp_response.errors
-    assert pp_response.success? == false
+    assert_equal false, pp_response.success?
   end
 
   def test_valid_parallel_pay
@@ -61,7 +61,7 @@ class PayRequestTest < Test::Unit::TestCase
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
     puts "redirect url to\n #{pp_response.approve_paypal_payment_url}"
-    assert pp_response.success?
+    assert_equal true, pp_response.success?
   end
 
   def test_invalid_parallel_pay
@@ -70,7 +70,7 @@ class PayRequestTest < Test::Unit::TestCase
     data = read_json_file(data_filepath)
     pp_response = @pay_request.pay(data)
     puts pp_response.errors
-    assert pp_response.success? == false
+    assert_equal false, pp_response.success?
   end
   
   def test_preapproval
