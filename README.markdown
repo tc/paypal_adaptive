@@ -76,6 +76,11 @@ Additionally, you can make calls to Paypal Adaptive's other APIs:
 
 Input is just a Hash just like the pay method. Refer to the Paypal manual for more details.
 
+### Using the embedded payment flow
+Instead of redirecting to the url from ```redirect_to pay_response.approve_paypal_payment_url``` you can generate the action url for your
+form by using ```pay_response.approve_paypal_payment_url 'MY TYPE' ``` The two types that are supported for embedded payment are 'light' and 'mini'
+More information about these types can be found here https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_api_APIntro
+
 ### Certificate validation
 You can set the location of the .pem file you wish to use for SSL certificate validation in paypal_adaptive.yml
 for each environment, e.g.:
