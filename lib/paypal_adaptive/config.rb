@@ -15,23 +15,12 @@ module PaypalAdaptive
       :beta_sandbox => "https://svcs.beta-sandbox.paypal.com"
     } unless defined? API_BASE_URL_MAPPING
 
-    attr_accessor :config_filepath, :paypal_base_url, :api_base_url, :headers, :ssl_cert_path, :ssl_cert_file
+    attr_accessor :paypal_base_url, :api_base_url, :headers, :ssl_cert_path, :ssl_cert_file
   
-    def initialize(env=nil, config_override=nil)
-      if env
-        #non-rails env
-        @config_filepath = File.join(File.dirname(__FILE__), "..", "..", "config", "paypal_adaptive.yml")
-        load(env, config_override)
-      else
-        @config_filepath = File.join(Rails.root, "config", "paypal_adaptive.yml")
-        load(Rails.env, config_override)
-      end
-    end
-
-    def load(environment, config_override)
-      config = YAML.load(ERB.new(File.new(@config_filepath).read).result)[environment]
-      config.merge!(config_override) unless config_override.nil?
+    def initialize(env=nil, config_override={})
+      config = YAML.load(ERB.new(File.new(config_filepath).read).result)[env]
       raise "Could not load settings from config file" unless config
+      config.merge!(config_override) unless config_override.nil?
 
       if config["retain_requests_for_test"] == true
         @retain_requests_for_test = true
@@ -56,17 +45,36 @@ module PaypalAdaptive
 
         if config['ssl_cert_file'] && config['ssl_cert_file'].length > 0
           @ssl_cert_file = config['ssl_cert_file']
-        elsif File.exists?("/etc/ssl/certs")
-          @ssl_cert_path = "/etc/ssl/certs"
         else
           @ssl_cert_file = File.join(File.dirname(__FILE__), "..", "..", "cacert.pem")
         end
+        puts "warning: coulf not find file: #{@ssl_cert_file}" unless File.exists?(@ssl_cert_file.to_s)
+      end
+    end
+
+    def config_filepath
+      if defined?(Rails)
+        Rails.root.join("config", "paypal_adaptive.yml")
+      else
+        File.join(File.dirname(__FILE__), "..", "..", "config", "paypal_adaptive.yml")
       end
     end
 
     def retain_requests_for_test?
       !!@retain_requests_for_test
     end
+  end
 
+  def self.config(env = nil)
+    env ||= default_env_for_config
+    raise "Please provide an environment" unless env
+    @configs ||= Hash.new
+    @configs[env] ||= Config.new(env)
+  end
+
+  private
+
+  def self.default_env_for_config
+    defined?(Rails) ? Rails.env : nil
   end
 end
