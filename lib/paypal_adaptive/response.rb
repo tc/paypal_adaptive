@@ -1,7 +1,7 @@
 module PaypalAdaptive
   class Response < Hash    
     def initialize(response, env=nil)
-      config = PaypalAdaptive::Config.new(env)
+      config = PaypalAdaptive.config(env)
       @paypal_base_url = config.paypal_base_url
       
       self.merge!(response)
