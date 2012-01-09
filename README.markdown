@@ -92,6 +92,9 @@ If you don't set ssl_cert_file then paypal_adaptive will check for certificates 
 this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
 
 ## Changelog
+0.2.7
+Refactored config file handling for better non-Rails support, thanks mreinsch and dave-thompson.
+
 0.2.6
 Fix for using correct status field in pre-approval, thanks nbibler. Fix for ruby 1.9.3, thanks deepj.
 
