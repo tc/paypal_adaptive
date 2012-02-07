@@ -16,7 +16,7 @@ module PaypalAdaptive
     } unless defined? API_BASE_URL_MAPPING
 
     attr_accessor :paypal_base_url, :api_base_url, :headers, :ssl_cert_path, :ssl_cert_file
-  
+
     def initialize(env=nil, config_override={})
       config = YAML.load(ERB.new(File.new(config_filepath).read).result)[env]
       raise "Could not load settings from config file" unless config
@@ -31,17 +31,17 @@ module PaypalAdaptive
         @ssl_cert_file = nil
         @paypal_base_url = PAYPAL_BASE_URL_MAPPING[pp_env]
         @api_base_url = API_BASE_URL_MAPPING[pp_env]
-        
+
         # http.rb requires headers to be strings. Protect against ints in paypal_adaptive.yml
         config.update(config){ |key,v| v.to_s }
         @headers = {
           "X-PAYPAL-SECURITY-USERID" => config['username'],
           "X-PAYPAL-SECURITY-PASSWORD" => config['password'],
-          "X-PAYPAL-SECURITY-SIGNATURE" => config['signature'],
           "X-PAYPAL-APPLICATION-ID" => config['application_id'],
           "X-PAYPAL-REQUEST-DATA-FORMAT" => "JSON",
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
         }
+        @headers.merge!({"X-PAYPAL-SECURITY-SIGNATURE" => config['signature']}) if config['signature']
 
         if config['ssl_cert_file'] && config['ssl_cert_file'].length > 0
           @ssl_cert_file = config['ssl_cert_file']
