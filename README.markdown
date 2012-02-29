@@ -77,7 +77,7 @@ Additionally, you can make calls to Paypal Adaptive's other APIs:
 Input is just a Hash just like the pay method. Refer to the Paypal manual for more details.
 
 ### Certificate validation
-You can set the location of the .pem file you wish to use for SSL certificate validation in paypal_adaptive.yml
+You can set the location of the key file you downloaded from PayPal, in paypal_adaptive.yml
 for each environment, e.g.:
 
     development:
@@ -86,10 +86,9 @@ for each environment, e.g.:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
-      ssl_cert_file: "/path/to/your/cacert.pem"
+      ssl_cert_file: "/path/to/your/private.key"
 
-If you don't set ssl_cert_file then paypal_adaptive will check for certificates in /etc/ssl/certs if
-this location exists, otherwise falling back to the cacert.pem file included with paypal_adaptive.
+The ssl_cert_file should point to your cert_key_pem.txt that is downloaded through the paypal developer interface. It will contain a section that specifies the RSA private key and another section that specifies a certificate. If this is left empty, paypal_adaptive will attempt to use the signature method of validation with PayPal, so your signature config must not be nil.
 
 ## Changelog
 0.2.8
