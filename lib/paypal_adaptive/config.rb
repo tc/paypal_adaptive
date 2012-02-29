@@ -43,12 +43,7 @@ module PaypalAdaptive
         }
         @headers.merge!({"X-PAYPAL-SECURITY-SIGNATURE" => config['signature']}) if config['signature']
 
-        if config['ssl_cert_file'] && config['ssl_cert_file'].length > 0
-          @ssl_cert_file = config['ssl_cert_file']
-        else
-          @ssl_cert_file = File.join(File.dirname(__FILE__), "..", "..", "cacert.pem")
-        end
-        puts "warning: coulf not find file: #{@ssl_cert_file}" unless File.exists?(@ssl_cert_file.to_s)
+        @ssl_cert_file = config['ssl_cert_file'] unless config['ssl_cert_file'].blank?
       end
     end
 
