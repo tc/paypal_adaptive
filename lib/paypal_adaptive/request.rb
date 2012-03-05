@@ -75,6 +75,10 @@ module PaypalAdaptive
       PaypalAdaptive::Response.new(post(data, path), @env)
     end
 
+    def rescue_error_message(e, message = nil)
+      {"responseEvelope" => {"ack" => "Failure"}, "error" => [{"message" => (message ||= e)}]}
+    end
+
     def post(data, path)
       #hack fix: JSON.unparse doesn't work in Rails 2.3.5; only {}.to_json does..
       api_request_data = JSON.unparse(data) rescue data.to_json
@@ -90,9 +94,20 @@ module PaypalAdaptive
       end
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
 
-      response_data = http.post(path, api_request_data, @headers).body
+      begin
+        response_data = http.post(path, api_request_data, @headers)
+        return JSON.parse(response_data.body)
+      rescue Net::HTTPBadGateway => e
+        rescue_error_message(e, "Error reading from remote server.")
+      rescue Exception => e
+        case e
+        when Errno::ECONNRESET
+          rescue_error_message(e, "Connection Reset. Request invalid URL.")
+        else
+          rescue_error_message(e)
+        end
+      end
 
-      JSON.parse(response_data)
     end
   end
 
