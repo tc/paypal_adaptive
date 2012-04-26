@@ -76,7 +76,7 @@ module PaypalAdaptive
     end
 
     def rescue_error_message(e, message = nil)
-      {"responseEvelope" => {"ack" => "Failure"}, "error" => [{"message" => (message ||= e)}]}
+      {"responseEnvelope" => {"ack" => "Failure"}, "error" => [{"message" => (message ||= e)}]}
     end
 
     def post(data, path)
