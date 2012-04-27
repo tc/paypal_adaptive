@@ -1,0 +1,7 @@
+{
+"requestEnvelope":{"errorLanguage":"en_US"},
+"emailAddress": "foo@example.com",
+"firstName": "foo",
+"lastName": "bar",
+"matchCriteria": "NONE"
+}
