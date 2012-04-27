@@ -21,9 +21,10 @@ module PaypalAdaptive
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
 
       if @ssl_cert_file
-        cert = File.read(@ssl_cert_file)
-        http.cert = OpenSSL::X509::Certificate.new(cert)
-        http.key = OpenSSL::PKey::RSA.new(cert)
+        # cert = File.read(@ssl_cert_file)
+        # http.cert = OpenSSL::X509::Certificate.new(cert)
+        # http.key = OpenSSL::PKey::RSA.new(cert)
+        http.ca_file = @ssl_cert_file
       end
 
       path = "#{@paypal_base_url}/cgi-bin/webscr"
