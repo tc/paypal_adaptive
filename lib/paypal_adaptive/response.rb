@@ -11,8 +11,8 @@ module PaypalAdaptive
       begin
         !! (self['responseEnvelope']['ack'].to_s =~ /^Success$/i &&
           !(self['paymentExecStatus'].to_s =~ /^ERROR$/i))
-      rescue
-        logger.error self.inspect
+      rescue Exception => e
+        rescue_error_message(e, self.inspect)
       end    
     end
     
