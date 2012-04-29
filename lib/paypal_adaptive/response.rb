@@ -12,7 +12,7 @@ module PaypalAdaptive
         !! (self['responseEnvelope']['ack'].to_s =~ /^Success$/i &&
           !(self['paymentExecStatus'].to_s =~ /^ERROR$/i))
       rescue Exception => e
-        rescue_error_message(e, self.inspect)
+        puts e
       end    
     end
     
