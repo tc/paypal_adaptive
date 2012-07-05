@@ -44,6 +44,7 @@ module PaypalAdaptive
         @headers.merge!({"X-PAYPAL-SECURITY-SIGNATURE" => config['signature']}) if config['signature']
 
         @ssl_cert_file = config['ssl_cert_file'] unless config['ssl_cert_file'].blank?
+        @ssl_cert_path = config['ssl_cert_path'] unless config['ssl_cert_path'].blank?
       end
     end
 

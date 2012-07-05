@@ -8,8 +8,12 @@ module PaypalAdaptive
     end
     
     def success?
-      !! (self['responseEnvelope']['ack'].to_s =~ /^Success$/i &&
-        !(self['paymentExecStatus'].to_s =~ /^ERROR$/i))
+      begin
+        !! (self['responseEnvelope']['ack'].to_s =~ /^Success$/i &&
+          !(self['paymentExecStatus'].to_s =~ /^ERROR$/i))
+      rescue Exception => e
+        puts e
+      end    
     end
     
     def errors
