@@ -1,6 +1,6 @@
 module PaypalAdaptive
   class Response < Hash    
-    def initialize(response, env=nil)
+    def initialize(response={}, env=nil)
       config = PaypalAdaptive.config(env)
       @paypal_base_url = config.paypal_base_url
       
