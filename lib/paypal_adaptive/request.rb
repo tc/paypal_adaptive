@@ -14,6 +14,7 @@ module PaypalAdaptive
       @headers = config.headers
       @ssl_cert_path = config.ssl_cert_path
       @ssl_cert_file = config.ssl_cert_file
+      @api_cert_file = config.api_cert_file
     end
 
     def validate
@@ -91,13 +92,13 @@ module PaypalAdaptive
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 
-      if @ssl_cert_file
-        #cert = File.read(@ssl_cert_file)
-        #http.cert = OpenSSL::X509::Certificate.new(cert)
-        #http.key = OpenSSL::PKey::RSA.new(cert)
-        http.ca_file = @ssl_cert_file
+      if @api_cert_file
+        cert = File.read(@api_cert_file)
+        http.cert = OpenSSL::X509::Certificate.new(cert)
+        http.key = OpenSSL::PKey::RSA.new(cert)
       end
-      http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
+      http.ca_path = @ssl_cert_path unless @ssl_cert_path.blank?
+      http.ca_file = @ssl_cert_file unless @ssl_cert_file.blank?
 
       begin
         response_data = http.post(path, api_request_data, @headers)

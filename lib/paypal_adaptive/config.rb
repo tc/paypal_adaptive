@@ -15,7 +15,7 @@ module PaypalAdaptive
       :beta_sandbox => "https://svcs.beta-sandbox.paypal.com"
     } unless defined? API_BASE_URL_MAPPING
 
-    attr_accessor :paypal_base_url, :api_base_url, :headers, :ssl_cert_path, :ssl_cert_file
+    attr_accessor :paypal_base_url, :api_base_url, :headers, :ssl_cert_path, :ssl_cert_file, :api_cert_file
 
     def initialize(env=nil, config_override={})
       config = YAML.load(ERB.new(File.new(config_filepath).read).result)[env]
@@ -29,6 +29,7 @@ module PaypalAdaptive
 
         @ssl_cert_path = nil
         @ssl_cert_file = nil
+        @api_cert_file = nil
         @paypal_base_url = PAYPAL_BASE_URL_MAPPING[pp_env]
         @api_base_url = API_BASE_URL_MAPPING[pp_env]
 
@@ -42,8 +43,9 @@ module PaypalAdaptive
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
         }
         @headers.merge!({"X-PAYPAL-SECURITY-SIGNATURE" => config['signature']}) if config['signature']
-
+        @ssl_cert_path = config['ssl_cert_path'] unless config['ssl_cert_path'].blank?
         @ssl_cert_file = config['ssl_cert_file'] unless config['ssl_cert_file'].blank?
+        @api_cert_file = config['api_cert_file'] unless config['api_cert_file'].blank?
       end
     end
 
