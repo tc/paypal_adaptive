@@ -91,6 +91,9 @@ for each environment, e.g.:
 The ssl_cert_file should point to your cert_key_pem.txt that is downloaded through the paypal developer interface. It will contain a section that specifies the RSA private key and another section that specifies a certificate. If this is left empty, paypal_adaptive will attempt to use the signature method of validation with PayPal, so your signature config must not be nil.
 
 ## Changelog
+0.3.2
+Added support to api certificate since ssl_cert_file config is now used to set CA Authority. thanks jimbocortes
+
 0.3.1
 Update json dependency to use ~>1.0 so any version 1.X will work.
 
