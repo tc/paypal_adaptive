@@ -17,7 +17,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
-      ssl_cert_file:
+      api_cert_file:
 
     test:
       environment: "sandbox"
@@ -25,7 +25,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
-      ssl_cert_file:
+      api_cert_file:
 
     production:
       environment: "production"
@@ -33,7 +33,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "my_production_password"
       signature: "my_production_signature"
       application_id: "my_production_app_id"
-      ssl_cert_file:
+      api_cert_file:
 
 You can also use ENV variables when specifying your configuration. eg.
 ```<%= ENV[''paypal.username'] %>```
@@ -86,9 +86,9 @@ for each environment, e.g.:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
-      ssl_cert_file: "/path/to/your/private.key"
+      api_cert_file: "/path/to/your/private.key"
 
-The ssl_cert_file should point to your cert_key_pem.txt that is downloaded through the paypal developer interface. It will contain a section that specifies the RSA private key and another section that specifies a certificate. If this is left empty, paypal_adaptive will attempt to use the signature method of validation with PayPal, so your signature config must not be nil.
+The api_cert_file should point to your cert_key_pem.txt that is downloaded through the paypal developer interface. It will contain a section that specifies the RSA private key and another section that specifies a certificate. If this is left empty, paypal_adaptive will attempt to use the signature method of validation with PayPal, so your signature config must not be nil.
 
 ## Changelog
 0.3.2
