@@ -9,6 +9,6 @@
             ]},
 "cancelUrl":"http://127.0.0.1:3000/payments/canceled_payment_request", 
  "actionType":"PAY",
- "senderEmail": "a@a.com"
+ "senderEmail": "a@test.com"
 }
 

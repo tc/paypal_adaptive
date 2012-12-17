@@ -64,7 +64,7 @@ class PayRequestTest < Test::Unit::TestCase
   MINI_APPROVE_URL_PATTERN = %r{^https://www.sandbox.paypal.com/webapps/adaptivepayment/flow/pay\?expType=mini&paykey=AP-}
   
   def assert_success_response(pp_response)
-    assert_equal true, pp_response.success?
+    assert_equal true, pp_response.success?, "expected success: #{pp_response.inspect}"
     assert_match APPROVE_URL_PATTERN, pp_response.approve_paypal_payment_url
     assert_match APPROVE_URL_PATTERN_JP, pp_response.approve_paypal_payment_url(:country => :jp)
     assert_match MINI_APPROVE_URL_PATTERN, pp_response.approve_paypal_payment_url('mini')
