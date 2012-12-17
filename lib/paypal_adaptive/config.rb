@@ -22,6 +22,8 @@ module PaypalAdaptive
       raise "Could not load settings from config file" unless config
       config.merge!(config_override) unless config_override.nil?
 
+      validate_config(config)
+
       if config["retain_requests_for_test"] == true
         @retain_requests_for_test = true
       else
@@ -47,6 +49,14 @@ module PaypalAdaptive
         @ssl_cert_file = config['ssl_cert_file'] unless config['ssl_cert_file'].blank?
         @api_cert_file = config['api_cert_file'] unless config['api_cert_file'].blank?
       end
+    end
+
+    def validate_config(config)
+      raise "No username in paypal_adaptive.yml specified." unless config['username']
+      raise "No password in paypal_adaptive.yml specified." unless config['password']
+      raise "No application_id in paypal_adaptive.yml specified." unless config['application_id']
+
+      true
     end
 
     def config_filepath
