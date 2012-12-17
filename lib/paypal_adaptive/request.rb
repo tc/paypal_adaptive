@@ -102,9 +102,11 @@ module PaypalAdaptive
 
       begin
         response_data = http.post(path, api_request_data, @headers)
-        return JSON.parse(response_data.body)
+        JSON.parse(response_data.body)
       rescue Net::HTTPBadGateway => e
         rescue_error_message(e, "Error reading from remote server.")
+      rescue JSON::ParserError => e
+        rescue_error_message(e, "Response is not in JSON format.")
       rescue Exception => e
         case e
         when Errno::ECONNRESET
