@@ -25,7 +25,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "sandbox_password"
       signature: "sandbox_signature"
       application_id: "sandbox_app_id"
-      api_cert_file:
+      api_cert_file: "/path/to_cert"
 
     production:
       environment: "production"
@@ -33,7 +33,7 @@ Create paypal_adaptive.yml to your config folder:
       password: "my_production_password"
       signature: "my_production_signature"
       application_id: "my_production_app_id"
-      api_cert_file:
+      api_cert_file: "/path/to_cert"
 
 You can also use ENV variables when specifying your configuration. eg.
 ```<%= ENV[''paypal.username'] %>```

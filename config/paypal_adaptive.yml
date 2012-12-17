@@ -4,7 +4,7 @@ development:
   password: "signupforuseratsandboxpaypal"
   signature: "signupforuseratsandboxpaypal"
   application_id: "APP-TEST"
-  ssl_cert_file:
+  api_cert_file: "/path/to_cert"
 
 test:
   environment: "sandbox"
@@ -12,7 +12,7 @@ test:
   password: "signupforuseratsandboxpaypal"
   signature: "signupforuseratsandboxpaypal"
   application_id: "APP-TEST"
-  ssl_cert_file:
+  api_cert_file: "/path/to_cert"
 
 production:
   environment: "production"
@@ -20,7 +20,7 @@ production:
   password: "my_production_password"
   signature: "my_production_signature"
   application_id: "my_production_app_id"
-  ssl_cert_file:
+  api_cert_file: "/path/to_cert"
 
 with_erb_tags:
   environment: "sandbox"
@@ -28,4 +28,4 @@ with_erb_tags:
   password: <%= ENV['paypal.password'] %>
   signature: "signupforuseratsandboxpaypal"
   application_id: "APP-TEST"
-  ssl_cert_file:
+  api_cert_file: "/path/to_cert"
