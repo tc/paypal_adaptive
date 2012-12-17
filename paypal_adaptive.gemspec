@@ -14,7 +14,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency("json", "~>1.0")
   s.add_dependency("jsonschema", "~>2.0.0")
-  s.add_dependency("rake")
+  s.add_development_dependency("rake")
+  s.add_development_dependency("activesupport", "~> 3.2.0")
 
   s.rubyforge_project = "paypal_adaptive"
 

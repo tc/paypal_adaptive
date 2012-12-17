@@ -1,6 +1,6 @@
 module PaypalAdaptive
   class Response < Hash    
-    def initialize(response, env=nil)
+    def initialize(response={}, env=nil)
       config = PaypalAdaptive.config(env)
       @paypal_base_url = config.paypal_base_url
       
@@ -26,14 +26,25 @@ module PaypalAdaptive
       message = errors.first['message'] rescue nil
     end
 
-    def approve_paypal_payment_url(type=nil)
-      if self['payKey'].nil?
-        return nil
-      elsif ['mini', 'light'].include?(type.to_s)
-        return "#{@paypal_base_url}/webapps/adaptivepayment/flow/pay?expType=#{type.to_s}&paykey=#{self['payKey']}"
+    # URL to redirect to in order for the user to approve the payment
+    #
+    # options:
+    # * country: default country code for the user
+    # * type: mini / light
+    def approve_paypal_payment_url(opts = {})
+      if opts.is_a?(Symbol) || opts.is_a?(String)
+        warn "[DEPRECATION] use approve_paypal_payment_url(:type => #{opts})"
+        opts = {:type => opts}
       end
-      
-      "#{@paypal_base_url}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
+      return nil if self['payKey'].nil?
+
+      if ['mini', 'light'].include?(opts[:type].to_s)
+        "#{@paypal_base_url}/webapps/adaptivepayment/flow/pay?expType=#{opts[:type]}&paykey=#{self['payKey']}"
+      else
+        base = @paypal_base_url
+        base = base + "/#{opts[:country]}" if opts[:country]
+        "#{base}/webscr?cmd=_ap-payment&paykey=#{self['payKey']}"
+      end
     end
 
     def preapproval_paypal_payment_url
