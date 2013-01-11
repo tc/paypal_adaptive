@@ -11,6 +11,12 @@ module PaypalAdaptive
       @ssl_cert_path = config.ssl_cert_path
       @ssl_cert_file = config.ssl_cert_file
       @api_cert_file = config.api_cert_file
+      @paypal_env = config['environment'].to_sym
+      @verify_mode = if @paypal_env == :sandbox
+        OpenSSL::SSL::VERIFY_NONE
+      else
+        OpenSSL::SSL::VERIFY_PEER
+      end
     end
 
     def send_back(data)
@@ -18,7 +24,7 @@ module PaypalAdaptive
       url = URI.parse @paypal_base_url
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = true
-      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.verify_mode = @verify_mode
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil?
 
       if @api_cert_file
