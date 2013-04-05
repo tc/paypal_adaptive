@@ -81,8 +81,15 @@ module PaypalAdaptive
       PaypalAdaptive::Response.new(post(data, path), @env)
     end
 
-    def rescue_error_message(e, message = nil)
-      {"responseEnvelope" => {"ack" => "Failure"}, "error" => [{"message" => (message ||= e)}]}
+    def rescue_error_message(e, message = nil, response_data = nil)
+      error = {"message" => message || e}
+      if response_data
+        error["details"] = {
+          "httpCode" => response_data.code,
+          "httpMessage" => response_data.message.to_s,
+          "httpBody" => response_data.body }
+      end
+      {"responseEnvelope" => {"ack" => "Failure"}, "error" => [error]}
     end
 
     def post(data, path)
@@ -107,13 +114,13 @@ module PaypalAdaptive
       rescue Net::HTTPBadGateway => e
         rescue_error_message(e, "Error reading from remote server.")
       rescue JSON::ParserError => e
-        rescue_error_message(e, "Response is not in JSON format.")
+        rescue_error_message(e, "Response is not in JSON format.", response_data)
       rescue Exception => e
         case e
         when Errno::ECONNRESET
           rescue_error_message(e, "Connection Reset. Request invalid URL.")
         else
-          rescue_error_message(e)
+          rescue_error_message(e, response_data)
         end
       end
 
