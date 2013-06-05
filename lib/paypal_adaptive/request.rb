@@ -74,6 +74,10 @@ module PaypalAdaptive
     def get_verified_status(data)
       wrap_post(data, "/AdaptiveAccounts/GetVerifiedStatus")
     end
+    
+    def get_funding_plans(data)
+      wrap_post(data, "/AdaptivePayments/GetFundingPlans")
+    end
 
     def wrap_post(data, path)
       raise NoDataError unless data
