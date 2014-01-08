@@ -1,6 +1,7 @@
 require 'net/http'
 require 'net/https'
 require 'json'
+require 'rack/utils'
 
 module PaypalAdaptive
   class IpnNotification
@@ -16,7 +17,8 @@ module PaypalAdaptive
 
     def send_back(data)
       data = "cmd=_notify-validate&#{data}"
-      url = URI.parse @paypal_base_url
+      path = "#{@paypal_base_url}/cgi-bin/webscr"
+      url = URI.parse path
       http = Net::HTTP.new(url.host, 443)
       http.use_ssl = true
       http.verify_mode = @verify_mode
@@ -30,8 +32,10 @@ module PaypalAdaptive
       http.ca_path = @ssl_cert_path unless @ssl_cert_path.blank?
       http.ca_file = @ssl_cert_file unless @ssl_cert_file.blank?
 
-      path = "#{@paypal_base_url}/cgi-bin/webscr"
-      response_data = http.post(path, data).body
+      req = Net::HTTP::Post.new(url.request_uri)
+      req.set_form_data(Rack::Utils.parse_nested_query(data))
+      req['Accept-Encoding'] = 'identity'
+      response_data = http.request(req).body
 
       @verified = response_data == "VERIFIED"
     end
