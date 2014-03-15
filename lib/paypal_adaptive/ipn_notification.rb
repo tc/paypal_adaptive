@@ -33,7 +33,12 @@ module PaypalAdaptive
       http.ca_file = @ssl_cert_file unless @ssl_cert_file.blank?
 
       req = Net::HTTP::Post.new(url.request_uri)
-      req.set_form_data(Rack::Utils.parse_nested_query(data))
+      # we don't want #set_form_data to create a hash and get our
+      # response out of order; Paypal IPN docs explicitly state that
+      # the contents of #send_back must be in the same order as they
+      # were recieved
+      req.body = data
+      req.content_type = 'application/x-www-form-urlencoded'
       req['Accept-Encoding'] = 'identity'
       response_data = http.request(req).body
 
