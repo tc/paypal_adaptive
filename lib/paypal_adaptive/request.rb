@@ -12,6 +12,7 @@ module PaypalAdaptive
       config = PaypalAdaptive.config(env)
       @api_base_url = config.api_base_url
       @headers = config.headers
+      @headers['Accept-Encoding'] = 'identity'
       @ssl_cert_path = config.ssl_cert_path
       @ssl_cert_file = config.ssl_cert_file
       @api_cert_file = config.api_cert_file
