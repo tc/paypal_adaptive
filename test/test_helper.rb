@@ -6,7 +6,6 @@ require "test/unit"
 require "json"
 require "jsonschema"
 require 'paypal_adaptive'
-require 'active_support/core_ext/string'
 require 'webmock/minitest'
 
 WebMock.allow_net_connect!

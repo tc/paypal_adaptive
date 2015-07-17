@@ -46,9 +46,9 @@ module PaypalAdaptive
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON"
         }
         @headers.merge!({"X-PAYPAL-SECURITY-SIGNATURE" => config['signature']}) if config['signature']
-        @ssl_cert_path = config['ssl_cert_path'] unless config['ssl_cert_path'].blank?
-        @ssl_cert_file = config['ssl_cert_file'] unless config['ssl_cert_file'].blank?
-        @api_cert_file = config['api_cert_file'] unless config['api_cert_file'].blank?
+        @ssl_cert_path = config['ssl_cert_path'] unless config['ssl_cert_path'].nil? || config['ssl_cert_path'].length == 0
+        @ssl_cert_file = config['ssl_cert_file'] unless config['ssl_cert_file'].nil? || config['ssl_cert_file'].length == 0
+        @api_cert_file = config['api_cert_file'] unless config['api_cert_file'].nil? || config['api_cert_file'].length == 0
         @verify_mode = if pp_env == :sandbox
           OpenSSL::SSL::VERIFY_NONE
         else

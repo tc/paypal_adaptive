@@ -29,8 +29,8 @@ module PaypalAdaptive
         http.cert = OpenSSL::X509::Certificate.new(cert)
         http.key = OpenSSL::PKey::RSA.new(cert)
       end
-      http.ca_path = @ssl_cert_path unless @ssl_cert_path.blank?
-      http.ca_file = @ssl_cert_file unless @ssl_cert_file.blank?
+      http.ca_path = @ssl_cert_path unless @ssl_cert_path.nil? || @ssl_cert_path.length == 0
+      http.ca_file = @ssl_cert_file unless @ssl_cert_file.nil? || @ssl_cert_file.length == 0
 
       req = Net::HTTP::Post.new(url.request_uri)
       # we don't want #set_form_data to create a hash and get our
