@@ -96,6 +96,9 @@ for each environment, e.g.:
 The api_cert_file should point to your cert_key_pem.txt that is downloaded through the paypal developer interface. It will contain a section that specifies the RSA private key and another section that specifies a certificate. If this is left empty, paypal_adaptive will attempt to use the signature method of validation with PayPal, so your signature config must not be nil.
 
 ## Changelog
+0.3.10
+Remove Rails dependent gems thanks @ rchekaluk
+
 0.3.9
 Ensure POST response is not decompressed under Ruby 2.0 thanks @rchekaluk
 
