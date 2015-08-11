@@ -7,6 +7,12 @@ class ConfigTest < Test::Unit::TestCase
     assert_equal nil, @config.ssl_cert_path
   end
 
+  def test_blank_ssl_cert_file
+    @config = PaypalAdaptive::Config.new("test", { "ssl_cert_file" => "" })
+    assert_equal nil, @config.ssl_cert_file
+    assert_equal nil, @config.ssl_cert_path
+  end
+
   def test_erb_tags
     ENV['paypal.username'] = 'account@email.com'
     ENV['paypal.password'] = 's3krit'
